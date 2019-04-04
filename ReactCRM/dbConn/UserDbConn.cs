@@ -112,7 +112,7 @@ namespace ReactCRM
                 sqlConn.Open();
                 DataTable table = new DataTable();
                 MySqlDataAdapter sqlDA = new MySqlDataAdapter();
-                MySqlCommand sqlComm = new MySqlCommand("spUserInfo", sqlConn);
+                MySqlCommand sqlComm = new MySqlCommand("spGetUserInfo", sqlConn);
                 sqlComm.CommandType = CommandType.StoredProcedure;
                 sqlDA.SelectCommand = sqlComm;
                 sqlDA.Fill(table);

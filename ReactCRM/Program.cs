@@ -31,7 +31,7 @@ namespace ReactCRM
                 //User authentication.
                 if (signInForm.ShowDialog() == DialogResult.OK)
                 {
-                    Application.Run(new DashBoardForm());
+                    Application.Run(new Form_Dashboard());
                 }
                 else
                 {

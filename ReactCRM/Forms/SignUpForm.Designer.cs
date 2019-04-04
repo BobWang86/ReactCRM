@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUpForm));
-            this.picBoxAzman = new System.Windows.Forms.PictureBox();
             this.signUpGroupBox = new System.Windows.Forms.GroupBox();
             this.tbPassword2 = new System.Windows.Forms.TextBox();
             this.lbPassword2 = new System.Windows.Forms.Label();
@@ -38,19 +37,10 @@
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.lbPassword1 = new System.Windows.Forms.Label();
             this.lbEmail = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxAzman)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.signUpGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picBoxAzman
-            // 
-            this.picBoxAzman.Image = ((System.Drawing.Image)(resources.GetObject("picBoxAzman.Image")));
-            this.picBoxAzman.Location = new System.Drawing.Point(162, 40);
-            this.picBoxAzman.Name = "picBoxAzman";
-            this.picBoxAzman.Size = new System.Drawing.Size(360, 154);
-            this.picBoxAzman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxAzman.TabIndex = 1;
-            this.picBoxAzman.TabStop = false;
             // 
             // signUpGroupBox
             // 
@@ -91,7 +81,8 @@
             // 
             // btnSignUp
             // 
-            this.btnSignUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(133)))), ((int)(((byte)(198)))));
+            this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.btnSignUp.Location = new System.Drawing.Point(159, 299);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(183, 47);
@@ -137,29 +128,37 @@
             this.lbEmail.TabIndex = 0;
             this.lbEmail.Text = "Email:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(139, 50);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(406, 126);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(19)))), ((int)(((byte)(51)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.signUpGroupBox);
-            this.Controls.Add(this.picBoxAzman);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SignUpForm";
             this.Text = "SignUpForm";
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxAzman)).EndInit();
             this.signUpGroupBox.ResumeLayout(false);
             this.signUpGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox picBoxAzman;
         private System.Windows.Forms.GroupBox signUpGroupBox;
         private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.TextBox tbEmail;
@@ -168,5 +167,6 @@
         private System.Windows.Forms.TextBox tbPassword1;
         private System.Windows.Forms.TextBox tbPassword2;
         private System.Windows.Forms.Label lbPassword2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
