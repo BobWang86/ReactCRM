@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 
-namespace ReactCRM
+namespace ReactCRM.dbConn
 {
     class dbConn
     {

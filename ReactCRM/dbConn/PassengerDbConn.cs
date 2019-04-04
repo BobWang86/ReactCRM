@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
-namespace ReactCRM
+namespace ReactCRM.dbConn
 {
     class PassengerDbConn: dbConn
     {

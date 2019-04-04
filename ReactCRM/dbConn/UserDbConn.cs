@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReactCRM
+namespace ReactCRM.dbConn
 {
     public class UserDbConn
     {

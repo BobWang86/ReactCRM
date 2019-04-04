@@ -23,7 +23,7 @@ namespace ReactCRM.UserControls
             var cnv = new Bunifu.DataViz.Canvas();
             var dataPoint = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_splineArea);
 
-            dataPoint.addLabely("Jan",rand.Next(0,500).ToString());
+            dataPoint.addLabely("Jan", rand.Next(0, 500).ToString());
             dataPoint.addLabely("Feb", rand.Next(0, 500).ToString());
             dataPoint.addLabely("Mar", rand.Next(0, 500).ToString());
             dataPoint.addLabely("Apr", rand.Next(0, 500).ToString());
