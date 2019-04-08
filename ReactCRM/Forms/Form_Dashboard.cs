@@ -13,57 +13,19 @@ namespace ReactCRM.Forms
 {
     public partial class Form_Dashboard : Form
     {
-        int PanelWidth;
-        bool isCollapsed;
-
         public Form_Dashboard()
         {
             InitializeComponent();
-            timerTime.Start();
-            PanelWidth = panelLeft.Width;
-            isCollapsed = false;
-            UC_Home uch = new UC_Home();
-            AddControlsToPanel(uch);
+            timer.Start();
+            UC_Home ucHome = new UC_Home();
+            AddControlsToPanel(ucHome);
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void Form_Dashboard_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (isCollapsed)
-            {
-                panelLeft.Width = panelLeft.Width + 10;
-                if (panelLeft.Width >= PanelWidth)
-                {
-                    timer1.Stop();
-                    isCollapsed = false;
-                    this.Refresh();
-                }
-            }
-            else
-            {
-                panelLeft.Width = panelLeft.Width - 10;
-                if (panelLeft.Width <= 59)
-                {
-                    timer1.Stop();
-                    isCollapsed = true;
-                    this.Refresh();
-                }
-            }
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            timer1.Start();
-        }
         private void moveSidePanel(Control btn)
         {
             panelSide.Top = btn.Top;
@@ -76,11 +38,45 @@ namespace ReactCRM.Forms
             panelControls.Controls.Clear();
             panelControls.Controls.Add(c);
         }
+
         private void btnHome_Click(object sender, EventArgs e)
         {
             moveSidePanel(btnHome);
-            UC_Home uch = new UC_Home();
-            AddControlsToPanel(uch);
+            UC_Home ucHome = new UC_Home();
+            AddControlsToPanel(ucHome);
+        }
+
+        private void btnClients_Click(object sender, EventArgs e)
+        {
+            moveSidePanel(btnClients);
+            UC_ManageClients ucClient = new UC_ManageClients();
+            AddControlsToPanel(ucClient);
+        }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            moveSidePanel(btnSales);
+            UC_ManageSales ucSale = new UC_ManageSales();
+            AddControlsToPanel(ucSale);
+        }
+
+        private void btnTickets_Click(object sender, EventArgs e)
+        {
+            moveSidePanel(btnTickets);
+            ManageTickets ucTicket = new ManageTickets();
+            AddControlsToPanel(ucTicket);
+        }
+
+        private void btnExpenses_Click(object sender, EventArgs e)
+        {
+            moveSidePanel(btnExpenses);
+            UC_ManageExpenses ucExpense = new UC_ManageExpenses();
+            AddControlsToPanel(ucExpense);
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            moveSidePanel(btnSettings);
         }
 
         private void btnSaleBooks_Click(object sender, EventArgs e)
@@ -90,43 +86,10 @@ namespace ReactCRM.Forms
             AddControlsToPanel(us);
         }
 
-        private void btnPurchase_Click(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
-            moveSidePanel(btnPurchase);
-            UC_PurchaseDetails up = new UC_PurchaseDetails();
-            AddControlsToPanel(up);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            moveSidePanel(btnExpense);
-            UC_ManageExpense ea = new UC_ManageExpense();
-            AddControlsToPanel(ea);
-        }
-
-        private void btnUsers_Click(object sender, EventArgs e)
-        {
-            moveSidePanel(btnUsers);
-            UC_ManageUser um = new UC_ManageUser();
-            AddControlsToPanel(um);
-        }
-
-        private void btnViewSales_Click(object sender, EventArgs e)
-        {
-            moveSidePanel(btnViewSales);
-            UC_ViewSales vs = new UC_ViewSales();
-            AddControlsToPanel(vs);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            moveSidePanel(btnSettings);
-        }
-
-        private void timerTime_Tick(object sender, EventArgs e)
-        {
-            DateTime dt = DateTime.Now;
-            labelTime.Text = dt.ToString("HH:MM:ss");
+            DateTime time = DateTime.Now;
+            labelTime.Text = time.ToString("HH:MM:ss");
         }
     }
 }

@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace ReactCRM.dbConn
 {
-    class PassengerDbConn: dbConn
+    class PassengerDbConn: dbSQL
     {
         //Insert passenger function.
         public void insertPassenger(string CusFName, string CusLName, string CusTelNum, string CusNation, string CusGender, string CusBirthDate, string UserID)

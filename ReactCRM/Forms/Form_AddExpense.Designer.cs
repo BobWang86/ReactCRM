@@ -28,201 +28,154 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AddExpense));
+            this.picLogp = new System.Windows.Forms.PictureBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.tbDate = new System.Windows.Forms.DateTimePicker();
+            this.tbAmount = new System.Windows.Forms.NumericUpDown();
+            this.tbType = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dragControl1 = new DragControlDemo.DragControl();
+            this.btnGen = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbAmount)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
+            // picLogp
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 10);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 341);
-            this.panel2.TabIndex = 13;
+            this.picLogp.Image = ((System.Drawing.Image)(resources.GetObject("picLogp.Image")));
+            this.picLogp.Location = new System.Drawing.Point(101, 12);
+            this.picLogp.Name = "picLogp";
+            this.picLogp.Size = new System.Drawing.Size(182, 66);
+            this.picLogp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLogp.TabIndex = 30;
+            this.picLogp.TabStop = false;
             // 
-            // panel4
+            // btnSubmit
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
-            this.panel4.Location = new System.Drawing.Point(412, 10);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 341);
-            this.panel4.TabIndex = 14;
+            this.btnSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(88)))), ((int)(((byte)(139)))));
+            this.btnSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(88)))), ((int)(((byte)(139)))));
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.Location = new System.Drawing.Point(117, 290);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(150, 40);
+            this.btnSubmit.TabIndex = 34;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // panel3
+            // tbDate
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 351);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(422, 10);
-            this.panel3.TabIndex = 15;
+            this.tbDate.CustomFormat = "yyyy/MM/dd";
+            this.tbDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.tbDate.Location = new System.Drawing.Point(120, 231);
+            this.tbDate.Name = "tbDate";
+            this.tbDate.Size = new System.Drawing.Size(220, 29);
+            this.tbDate.TabIndex = 40;
             // 
-            // panel1
+            // tbAmount
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(422, 10);
-            this.panel1.TabIndex = 12;
+            this.tbAmount.Location = new System.Drawing.Point(120, 166);
+            this.tbAmount.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.tbAmount.Name = "tbAmount";
+            this.tbAmount.Size = new System.Drawing.Size(220, 29);
+            this.tbAmount.TabIndex = 39;
             // 
-            // button3
+            // tbType
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackColor = System.Drawing.Color.Red;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(161, 296);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 38);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "Close";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.SeaGreen;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(256, 296);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 38);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(155, 94);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(213, 27);
-            this.textBox3.TabIndex = 26;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 98);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 19);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Expense Title:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(71, 138);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 19);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Amount:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(155, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(213, 27);
-            this.textBox1.TabIndex = 26;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(155, 176);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(213, 96);
-            this.richTextBox1.TabIndex = 29;
-            this.richTextBox1.Text = "";
+            this.tbType.FormattingEnabled = true;
+            this.tbType.Location = new System.Drawing.Point(120, 101);
+            this.tbType.Name = "tbType";
+            this.tbType.Size = new System.Drawing.Size(220, 29);
+            this.tbType.TabIndex = 38;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(48, 176);
+            this.label3.Location = new System.Drawing.Point(66, 237);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 19);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Description:";
+            this.label3.Size = new System.Drawing.Size(48, 21);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Date:";
             // 
-            // label4
+            // label2
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(129, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(199, 25);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "Add New Expense";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(41, 168);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 21);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Amount:";
             // 
-            // dragControl1
+            // label1
             // 
-            this.dragControl1.SelectControl = this;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(65, 104);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 21);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Type:";
+            // 
+            // btnGen
+            // 
+            this.btnGen.FlatAppearance.BorderSize = 0;
+            this.btnGen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Crimson;
+            this.btnGen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Crimson;
+            this.btnGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGen.Image = ((System.Drawing.Image)(resources.GetObject("btnGen.Image")));
+            this.btnGen.Location = new System.Drawing.Point(333, 0);
+            this.btnGen.Name = "btnGen";
+            this.btnGen.Size = new System.Drawing.Size(50, 50);
+            this.btnGen.TabIndex = 41;
+            this.toolTip1.SetToolTip(this.btnGen, "Generate Expenses");
+            this.btnGen.UseVisualStyleBackColor = true;
             // 
             // Form_AddExpense
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(422, 361);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
+            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.Controls.Add(this.btnGen);
+            this.Controls.Add(this.tbDate);
+            this.Controls.Add(this.tbAmount);
+            this.Controls.Add(this.tbType);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.picLogp);
+            this.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form_AddExpense";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form_AddExpense";
+            this.Text = "Add Expense";
+            ((System.ComponentModel.ISupportInitialize)(this.picLogp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.PictureBox picLogp;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.DateTimePicker tbDate;
+        private System.Windows.Forms.NumericUpDown tbAmount;
+        private System.Windows.Forms.ComboBox tbType;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private DragControlDemo.DragControl dragControl1;
+        private System.Windows.Forms.Button btnGen;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

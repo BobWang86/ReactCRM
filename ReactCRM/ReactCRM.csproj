@@ -109,7 +109,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="dbConn\dbClient.cs" />
-    <Compile Include="dbConn\dbDeal.cs" />
+    <Compile Include="dbConn\dbExpense.cs" />
+    <Compile Include="dbConn\dbSale.cs" />
     <Compile Include="dbConn\dbTicket.cs" />
     <Compile Include="dbConn\UserDbConn.cs" />
     <Compile Include="Forms\AdminBookingForm.cs">
@@ -126,17 +127,11 @@
     </Compile>
     <Compile Include="dbConn\BookingsDbConn.cs" />
     <Compile Include="dbConn\PassengerDbConn.cs" />
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\Form_AddClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Form_AddCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Form_AddCategory.Designer.cs">
-      <DependentUpon>Form_AddCategory.cs</DependentUpon>
+    <Compile Include="Forms\Form_AddClient.Designer.cs">
+      <DependentUpon>Form_AddClient.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form_AddExpense.cs">
       <SubType>Form</SubType>
@@ -144,17 +139,17 @@
     <Compile Include="Forms\Form_AddExpense.Designer.cs">
       <DependentUpon>Form_AddExpense.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form_AddNewBook.cs">
+    <Compile Include="Forms\Form_AddSale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form_AddNewBook.Designer.cs">
-      <DependentUpon>Form_AddNewBook.cs</DependentUpon>
+    <Compile Include="Forms\Form_AddSale.Designer.cs">
+      <DependentUpon>Form_AddSale.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form_AddStock.cs">
+    <Compile Include="Forms\Form_AddTicket.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form_AddStock.Designer.cs">
-      <DependentUpon>Form_AddStock.cs</DependentUpon>
+    <Compile Include="Forms\Form_AddTicket.Designer.cs">
+      <DependentUpon>Form_AddTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form_Dashboard.cs">
       <SubType>Form</SubType>
@@ -162,11 +157,29 @@
     <Compile Include="Forms\Form_Dashboard.Designer.cs">
       <DependentUpon>Form_Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form_FinishOrder.cs">
+    <Compile Include="Forms\Form_EditClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form_FinishOrder.Designer.cs">
-      <DependentUpon>Form_FinishOrder.cs</DependentUpon>
+    <Compile Include="Forms\Form_EditClient.Designer.cs">
+      <DependentUpon>Form_EditClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_EditExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_EditExpense.Designer.cs">
+      <DependentUpon>Form_EditExpense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_EditSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_EditSale.Designer.cs">
+      <DependentUpon>Form_EditSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_EditTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_EditTicket.Designer.cs">
+      <DependentUpon>Form_EditTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PassengersForm.cs">
       <SubType>Form</SubType>
@@ -174,7 +187,7 @@
     <Compile Include="Forms\PassengersForm.Designer.cs">
       <DependentUpon>PassengersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="dbConn\dbConn.cs" />
+    <Compile Include="dbConn\dbSQL.cs" />
     <Compile Include="Forms\DashBoardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,12 +206,6 @@
     </Compile>
     <Compile Include="Forms\SignInForm.Designer.cs">
       <DependentUpon>SignInForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SignUpForm.cs">
       <SubType>Form</SubType>
@@ -224,53 +231,71 @@
     <Compile Include="UserControls\UC_Home.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_Home.Designer.cs" />
-    <Compile Include="UserControls\UC_ManageExpense.cs">
+    <Compile Include="UserControls\UC_Home.Designer.cs">
+      <DependentUpon>UC_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_ManageExpenses.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_ManageExpense.Designer.cs" />
-    <Compile Include="UserControls\UC_ManageUser.cs">
+    <Compile Include="UserControls\UC_ManageExpenses.designer.cs">
+      <DependentUpon>UC_ManageExpenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_ManageClients.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_ManageUser.Designer.cs" />
-    <Compile Include="UserControls\UC_PurchaseDetails.cs">
+    <Compile Include="UserControls\UC_ManageClients.designer.cs">
+      <DependentUpon>UC_ManageClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ManageTickets.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_PurchaseDetails.Designer.cs" />
+    <Compile Include="UserControls\ManageTickets.designer.cs">
+      <DependentUpon>ManageTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_Sales.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_Sales.Designer.cs" />
-    <Compile Include="UserControls\UC_ViewSales.cs">
+    <Compile Include="UserControls\UC_Sales.designer.cs">
+      <DependentUpon>UC_Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_ManageSales.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UC_ViewSales.Designer.cs" />
+    <Compile Include="UserControls\UC_ManageSales.designer.cs">
+      <DependentUpon>UC_ManageSales.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AdminBookingForm.resx">
       <DependentUpon>AdminBookingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BookingsForm.resx">
       <DependentUpon>BookingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form_AddCategory.resx">
-      <DependentUpon>Form_AddCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_AddClient.resx">
+      <DependentUpon>Form_AddClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_AddExpense.resx">
       <DependentUpon>Form_AddExpense.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form_AddNewBook.resx">
-      <DependentUpon>Form_AddNewBook.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_AddSale.resx">
+      <DependentUpon>Form_AddSale.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form_AddStock.resx">
-      <DependentUpon>Form_AddStock.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_AddTicket.resx">
+      <DependentUpon>Form_AddTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Dashboard.resx">
       <DependentUpon>Form_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form_FinishOrder.resx">
-      <DependentUpon>Form_FinishOrder.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_EditClient.resx">
+      <DependentUpon>Form_EditClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_EditExpense.resx">
+      <DependentUpon>Form_EditExpense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_EditSale.resx">
+      <DependentUpon>Form_EditSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_EditTicket.resx">
+      <DependentUpon>Form_EditTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PassengersForm.resx">
       <DependentUpon>PassengersForm.cs</DependentUpon>
@@ -283,9 +308,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SignInForm.resx">
       <DependentUpon>SignInForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
@@ -306,12 +328,24 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControls\UC_Home.resx" />
-    <EmbeddedResource Include="UserControls\UC_ManageExpense.resx" />
-    <EmbeddedResource Include="UserControls\UC_ManageUser.resx" />
-    <EmbeddedResource Include="UserControls\UC_PurchaseDetails.resx" />
-    <EmbeddedResource Include="UserControls\UC_Sales.resx" />
-    <EmbeddedResource Include="UserControls\UC_ViewSales.resx" />
+    <EmbeddedResource Include="UserControls\UC_Home.resx">
+      <DependentUpon>UC_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_ManageExpenses.resx">
+      <DependentUpon>UC_ManageExpenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_ManageClients.resx">
+      <DependentUpon>UC_ManageClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ManageTickets.resx">
+      <DependentUpon>ManageTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Sales.resx">
+      <DependentUpon>UC_Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_ManageSales.resx">
+      <DependentUpon>UC_ManageSales.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AzmanSys.Models.Customer.datasource" />
     <None Include="Properties\Settings.settings">

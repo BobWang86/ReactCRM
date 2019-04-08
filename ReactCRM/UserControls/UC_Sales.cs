@@ -17,13 +17,5 @@ namespace ReactCRM.UserControls
         {
             InitializeComponent();
         }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            using (Form_FinishOrder uf = new Form_FinishOrder())
-            {
-                uf.ShowDialog();
-            }
-        }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ReactCRM.dbConn
 {
-    class BookingsDbConn : dbConn
+    class BookingsDbConn : dbSQL
     {
         //Insert booking function.
         public void insertBooking(string BookingID, string PassengerID, string FlightID, string BookingPrice)

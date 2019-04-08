@@ -9,9 +9,8 @@ using MySql.Data.MySqlClient;
 
 namespace ReactCRM.dbConn
 {
-    class dbClient : dbConn
+    class dbClient : dbSQL
     {   
-        //Add client.
         public void addClient(string Name, string Email, string Phone, string Institute, string Source, string Value, string Pipeline, string AddDate, string ContactDate)
         {
             MySqlCommand comm = conn.CreateCommand();
@@ -30,7 +29,6 @@ namespace ReactCRM.dbConn
             connClose();
         }
 
-        //Updata client.
         public void updateClient(string ClientID, string Name, string Email, string Phone, string Institute, string Source, string Value, string Pipeline, string AddDate, string ContactDate)
         {
             MySqlCommand comm = conn.CreateCommand();
@@ -49,7 +47,6 @@ namespace ReactCRM.dbConn
             connClose();
         }
 
-        //Delete client by client ID.
         public void deleteClient(string ClientID)
         {
             MySqlCommand comm = conn.CreateCommand();

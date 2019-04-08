@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace ReactCRM.UserControls
 {
@@ -15,33 +17,63 @@ namespace ReactCRM.UserControls
         public UC_Home()
         {
             InitializeComponent();
+
+            cartesianChart1.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "Series 1",
+                    Values = new ChartValues<double> {4, 6, 5, 2, 7}
+                },
+                new LineSeries
+                {
+                    Title = "Series 2",
+                    Values = new ChartValues<double> {6, 7, 3, 4, 6},
+                    PointGeometry = null
+                },
+                new LineSeries
+                {
+                    Title = "Series 2",
+                    Values = new ChartValues<double> {5, 2, 8, 3},
+                    PointGeometry = DefaultGeometries.Square,
+                    PointGeometrySize = 15
+                }
+            };
+
+            cartesianChart1.AxisX.Add(new Axis
+            {
+                Title = "Month",
+                Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" }
+            });
+
+            cartesianChart1.AxisY.Add(new Axis
+            {
+                Title = "Sales",
+                LabelFormatter = value => value.ToString("C")
+            });
+
+            cartesianChart1.LegendLocation = LegendLocation.Right;
+
+            //modifying the series collection will animate and update the chart
+            cartesianChart1.Series.Add(new LineSeries
+            {
+                Values = new ChartValues<double> { 5, 3, 2, 4, 5 },
+                LineSmoothness = 0, //straight lines, 1 really smooth lines
+                PointGeometry = Geometry.Parse("m 25 70.36218 20 -28 -20 22 -8 -6 z"),
+                PointGeometrySize = 50,
+                PointForeground = Brushes.Gray
+            });
+
+            //modifying any series values will also animate and update the chart
+            cartesianChart1.Series[2].Values.Add(5d);
+
+
+            cartesianChart1.DataClick += CartesianChart1OnDataClick;
         }
-        Random rand = new Random();
 
-        private void LoadChart()
+        private void CartesianChart1OnDataClick(object sender, ChartPoint chartPoint)
         {
-            var cnv = new Bunifu.DataViz.Canvas();
-            var dataPoint = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_splineArea);
-
-            dataPoint.addLabely("Jan", rand.Next(0, 500).ToString());
-            dataPoint.addLabely("Feb", rand.Next(0, 500).ToString());
-            dataPoint.addLabely("Mar", rand.Next(0, 500).ToString());
-            dataPoint.addLabely("Apr", rand.Next(0, 500).ToString());
-            dataPoint.addLabely("Jun", rand.Next(0, 500).ToString());
-            dataPoint.addLabely("Jul", rand.Next(0, 500).ToString());
-            dataPoint.addLabely("Aug", rand.Next(0, 500).ToString());
-            dataPoint.addLabely("Sep", rand.Next(0, 500).ToString());
-            dataPoint.addLabely("Oct", rand.Next(0, 500).ToString());
-
-            cnv.addData(dataPoint);
-            bunifuDataViz1.colorSet.Add(Color.Red);
-            bunifuDataViz1.Render(cnv);
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LoadChart();
+            MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
         }
     }
 }
