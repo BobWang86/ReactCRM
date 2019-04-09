@@ -37,7 +37,6 @@
             this.btnClients = new System.Windows.Forms.Button();
             this.btnExpenses = new System.Windows.Forms.Button();
             this.btnTickets = new System.Windows.Forms.Button();
-            this.btnSaleBooks = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -65,7 +64,6 @@
             this.panelLeft.Controls.Add(this.btnClients);
             this.panelLeft.Controls.Add(this.btnExpenses);
             this.panelLeft.Controls.Add(this.btnTickets);
-            this.panelLeft.Controls.Add(this.btnSaleBooks);
             this.panelLeft.Controls.Add(this.btnHome);
             this.panelLeft.Controls.Add(this.panel1);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -107,7 +105,7 @@
             this.btnSales.ForeColor = System.Drawing.Color.White;
             this.btnSales.Image = ((System.Drawing.Image)(resources.GetObject("btnSales.Image")));
             this.btnSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSales.Location = new System.Drawing.Point(15, 260);
+            this.btnSales.Location = new System.Drawing.Point(15, 200);
             this.btnSales.Name = "btnSales";
             this.btnSales.Size = new System.Drawing.Size(200, 60);
             this.btnSales.TabIndex = 2;
@@ -124,7 +122,7 @@
             this.btnClients.ForeColor = System.Drawing.Color.White;
             this.btnClients.Image = ((System.Drawing.Image)(resources.GetObject("btnClients.Image")));
             this.btnClients.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClients.Location = new System.Drawing.Point(15, 200);
+            this.btnClients.Location = new System.Drawing.Point(15, 260);
             this.btnClients.Name = "btnClients";
             this.btnClients.Size = new System.Drawing.Size(200, 60);
             this.btnClients.TabIndex = 2;
@@ -141,7 +139,7 @@
             this.btnExpenses.ForeColor = System.Drawing.Color.White;
             this.btnExpenses.Image = ((System.Drawing.Image)(resources.GetObject("btnExpenses.Image")));
             this.btnExpenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExpenses.Location = new System.Drawing.Point(15, 380);
+            this.btnExpenses.Location = new System.Drawing.Point(15, 320);
             this.btnExpenses.Name = "btnExpenses";
             this.btnExpenses.Size = new System.Drawing.Size(200, 60);
             this.btnExpenses.TabIndex = 2;
@@ -158,7 +156,7 @@
             this.btnTickets.ForeColor = System.Drawing.Color.White;
             this.btnTickets.Image = ((System.Drawing.Image)(resources.GetObject("btnTickets.Image")));
             this.btnTickets.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTickets.Location = new System.Drawing.Point(15, 320);
+            this.btnTickets.Location = new System.Drawing.Point(15, 380);
             this.btnTickets.Name = "btnTickets";
             this.btnTickets.Size = new System.Drawing.Size(200, 60);
             this.btnTickets.TabIndex = 2;
@@ -166,24 +164,6 @@
             this.btnTickets.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTickets.UseVisualStyleBackColor = true;
             this.btnTickets.Click += new System.EventHandler(this.btnTickets_Click);
-            // 
-            // btnSaleBooks
-            // 
-            this.btnSaleBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSaleBooks.FlatAppearance.BorderSize = 0;
-            this.btnSaleBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaleBooks.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaleBooks.ForeColor = System.Drawing.Color.White;
-            this.btnSaleBooks.Image = ((System.Drawing.Image)(resources.GetObject("btnSaleBooks.Image")));
-            this.btnSaleBooks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaleBooks.Location = new System.Drawing.Point(15, 660);
-            this.btnSaleBooks.Name = "btnSaleBooks";
-            this.btnSaleBooks.Size = new System.Drawing.Size(200, 60);
-            this.btnSaleBooks.TabIndex = 2;
-            this.btnSaleBooks.Text = "     Sale Books";
-            this.btnSaleBooks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSaleBooks.UseVisualStyleBackColor = true;
-            this.btnSaleBooks.Click += new System.EventHandler(this.btnSaleBooks_Click);
             // 
             // btnHome
             // 
@@ -348,7 +328,6 @@
         private System.Windows.Forms.Button btnClients;
         private System.Windows.Forms.Button btnExpenses;
         private System.Windows.Forms.Button btnTickets;
-        private System.Windows.Forms.Button btnSaleBooks;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lbUserEmail;
         private System.Windows.Forms.Label labelTime;

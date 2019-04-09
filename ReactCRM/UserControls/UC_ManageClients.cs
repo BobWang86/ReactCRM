@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ReactCRM.Forms;
 using ReactCRM.dbConn;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace ReactCRM.UserControls
 {
@@ -35,6 +37,10 @@ namespace ReactCRM.UserControls
             {
                 selectedClient.Columns.Add(column.Name, typeof(string));
             }
+
+            LineChart();
+
+            PieChart();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -101,6 +107,80 @@ namespace ReactCRM.UserControls
 
                 ClientID = dgvClients.SelectedRows[0].Cells[0].Value.ToString();
             }
+        }
+
+        private void LineChart()
+        {
+            cartesianChart1.Series = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "2015",
+                    Values = new ChartValues<double> { 10, 50, 39, 50 }
+                }
+            };
+
+            //adding series will update and animate the chart automatically
+            cartesianChart1.Series.Add(new ColumnSeries
+            {
+                Title = "2016",
+                Values = new ChartValues<double> { 11, 56, 42 }
+            });
+
+            //adding values updates and animates the chart automatically
+            cartesianChart1.Series[1].Values.Add(48d);
+
+            cartesianChart1.AxisX.Add(new Axis
+            {
+                Title = "Sales Man",
+                Labels = new[] { "Maria", "Susan", "Charles", "Frida" }
+            });
+
+            cartesianChart1.AxisY.Add(new Axis
+            {
+                Title = "Sold Apps",
+                LabelFormatter = value => value.ToString("N")
+            });
+        }
+
+        private void PieChart()
+        {
+            Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            pieChart1.Series = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title = "Maria",
+                    Values = new ChartValues<double> {3},
+                    PushOut = 15,
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
+                new PieSeries
+                {
+                    Title = "Charles",
+                    Values = new ChartValues<double> {4},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
+                new PieSeries
+                {
+                    Title = "Frida",
+                    Values = new ChartValues<double> {6},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
+                new PieSeries
+                {
+                    Title = "Frederic",
+                    Values = new ChartValues<double> {2},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                }
+            };
+
+            pieChart1.LegendLocation = LegendLocation.Bottom;
         }
     }
 }

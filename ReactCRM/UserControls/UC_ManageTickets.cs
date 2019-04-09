@@ -12,7 +12,7 @@ using ReactCRM.dbConn;
 
 namespace ReactCRM.UserControls
 {
-    public partial class ManageTickets : UserControl
+    public partial class UC_ManageTickets : UserControl
     {
         string TicketID;
 
@@ -20,7 +20,7 @@ namespace ReactCRM.UserControls
 
         DataTable selectedTicket = new DataTable();
 
-        public ManageTickets()
+        public UC_ManageTickets()
         {
             InitializeComponent();
 

@@ -126,7 +126,7 @@
             this.btnGen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Crimson;
             this.btnGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGen.Image = ((System.Drawing.Image)(resources.GetObject("btnGen.Image")));
-            this.btnGen.Location = new System.Drawing.Point(652, 470);
+            this.btnGen.Location = new System.Drawing.Point(651, 437);
             this.btnGen.Name = "btnGen";
             this.btnGen.Size = new System.Drawing.Size(50, 50);
             this.btnGen.TabIndex = 24;
@@ -137,7 +137,7 @@
             // 
             this.tbDate.CustomFormat = "yyyy/MM/dd";
             this.tbDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.tbDate.Location = new System.Drawing.Point(536, 391);
+            this.tbDate.Location = new System.Drawing.Point(536, 359);
             this.tbDate.Name = "tbDate";
             this.tbDate.Size = new System.Drawing.Size(150, 29);
             this.tbDate.TabIndex = 23;
@@ -147,7 +147,7 @@
             this.btnSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(88)))), ((int)(((byte)(139)))));
             this.btnSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(88)))), ((int)(((byte)(139)))));
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubmit.Location = new System.Drawing.Point(273, 448);
+            this.btnSubmit.Location = new System.Drawing.Point(270, 420);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(150, 40);
             this.btnSubmit.TabIndex = 22;
@@ -158,7 +158,7 @@
             // tbType
             // 
             this.tbType.FormattingEnabled = true;
-            this.tbType.Location = new System.Drawing.Point(87, 391);
+            this.tbType.Location = new System.Drawing.Point(89, 359);
             this.tbType.Name = "tbType";
             this.tbType.Size = new System.Drawing.Size(150, 29);
             this.tbType.TabIndex = 20;
@@ -166,7 +166,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(470, 395);
+            this.label4.Location = new System.Drawing.Point(470, 363);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 21);
             this.label4.TabIndex = 15;
@@ -175,7 +175,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(255, 395);
+            this.label3.Location = new System.Drawing.Point(255, 363);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 21);
             this.label3.TabIndex = 16;
@@ -184,7 +184,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 395);
+            this.label2.Location = new System.Drawing.Point(20, 363);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 21);
             this.label2.TabIndex = 17;
@@ -193,7 +193,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 280);
+            this.label5.Location = new System.Drawing.Point(20, 283);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 21);
             this.label5.TabIndex = 17;
@@ -201,16 +201,16 @@
             // 
             // tbDetail
             // 
-            this.tbDetail.Location = new System.Drawing.Point(17, 312);
+            this.tbDetail.Location = new System.Drawing.Point(89, 283);
             this.tbDetail.Name = "tbDetail";
-            this.tbDetail.Size = new System.Drawing.Size(670, 60);
+            this.tbDetail.Size = new System.Drawing.Size(595, 60);
             this.tbDetail.TabIndex = 25;
             this.tbDetail.Text = "";
             // 
             // tbStatus
             // 
             this.tbStatus.FormattingEnabled = true;
-            this.tbStatus.Location = new System.Drawing.Point(332, 391);
+            this.tbStatus.Location = new System.Drawing.Point(332, 359);
             this.tbStatus.Name = "tbStatus";
             this.tbStatus.Size = new System.Drawing.Size(120, 29);
             this.tbStatus.TabIndex = 20;
@@ -219,7 +219,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
-            this.ClientSize = new System.Drawing.Size(704, 521);
+            this.ClientSize = new System.Drawing.Size(704, 489);
             this.Controls.Add(this.tbDetail);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);

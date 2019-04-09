@@ -246,17 +246,11 @@
     <Compile Include="UserControls\UC_ManageClients.designer.cs">
       <DependentUpon>UC_ManageClients.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ManageTickets.cs">
+    <Compile Include="UserControls\UC_ManageTickets.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ManageTickets.designer.cs">
-      <DependentUpon>ManageTickets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UC_Sales.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UC_Sales.designer.cs">
-      <DependentUpon>UC_Sales.cs</DependentUpon>
+    <Compile Include="UserControls\UC_ManageTickets.designer.cs">
+      <DependentUpon>UC_ManageTickets.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UC_ManageSales.cs">
       <SubType>UserControl</SubType>
@@ -337,11 +331,8 @@
     <EmbeddedResource Include="UserControls\UC_ManageClients.resx">
       <DependentUpon>UC_ManageClients.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ManageTickets.resx">
-      <DependentUpon>ManageTickets.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UC_Sales.resx">
-      <DependentUpon>UC_Sales.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UC_ManageTickets.resx">
+      <DependentUpon>UC_ManageTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_ManageSales.resx">
       <DependentUpon>UC_ManageSales.cs</DependentUpon>

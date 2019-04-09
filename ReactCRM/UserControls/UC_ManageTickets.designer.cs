@@ -1,6 +1,6 @@
 ﻿namespace ReactCRM.UserControls
 {
-    partial class ManageTickets
+    partial class UC_ManageTickets
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageTickets));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_ManageTickets));
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnEmail = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();

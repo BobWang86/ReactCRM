@@ -63,7 +63,7 @@ namespace ReactCRM.Forms
         private void btnTickets_Click(object sender, EventArgs e)
         {
             moveSidePanel(btnTickets);
-            ManageTickets ucTicket = new ManageTickets();
+            UC_ManageTickets ucTicket = new UC_ManageTickets();
             AddControlsToPanel(ucTicket);
         }
 
@@ -77,13 +77,6 @@ namespace ReactCRM.Forms
         private void btnSettings_Click(object sender, EventArgs e)
         {
             moveSidePanel(btnSettings);
-        }
-
-        private void btnSaleBooks_Click(object sender, EventArgs e)
-        {
-            moveSidePanel(btnSaleBooks);
-            UC_Sales us = new UC_Sales();
-            AddControlsToPanel(us);
         }
 
         private void timer_Tick(object sender, EventArgs e)
