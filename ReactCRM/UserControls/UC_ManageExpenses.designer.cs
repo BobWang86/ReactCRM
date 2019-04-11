@@ -44,9 +44,10 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.dgvExpenses = new System.Windows.Forms.DataGridView();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.pieChart1 = new LiveCharts.WinForms.PieChart();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.pieChart1 = new LiveCharts.Wpf.PieChart();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -218,13 +219,16 @@
             // 
             // dgvExpenses
             // 
-            this.dgvExpenses.AllowUserToOrderColumns = true;
+            this.dgvExpenses.AllowUserToAddRows = false;
+            this.dgvExpenses.AllowUserToDeleteRows = false;
             this.dgvExpenses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvExpenses.BackgroundColor = System.Drawing.Color.White;
             this.dgvExpenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExpenses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvExpenses.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvExpenses.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
             this.dgvExpenses.Location = new System.Drawing.Point(0, 0);
+            this.dgvExpenses.MultiSelect = false;
             this.dgvExpenses.Name = "dgvExpenses";
             this.dgvExpenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvExpenses.Size = new System.Drawing.Size(420, 540);
@@ -241,25 +245,6 @@
             this.panel8.Size = new System.Drawing.Size(620, 320);
             this.panel8.TabIndex = 13;
             // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.Controls.Add(this.pieChart1);
-            this.panel9.ForeColor = System.Drawing.Color.Black;
-            this.panel9.Location = new System.Drawing.Point(10, 330);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(620, 320);
-            this.panel9.TabIndex = 13;
-            // 
-            // pieChart1
-            // 
-            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart1.Location = new System.Drawing.Point(0, 0);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(620, 320);
-            this.pieChart1.TabIndex = 0;
-            this.pieChart1.Text = "pieChart1";
-            // 
             // cartesianChart1
             // 
             this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -268,6 +253,26 @@
             this.cartesianChart1.Size = new System.Drawing.Size(620, 320);
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Controls.Add(this.elementHost1);
+            this.panel9.ForeColor = System.Drawing.Color.Black;
+            this.panel9.Location = new System.Drawing.Point(10, 330);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(620, 320);
+            this.panel9.TabIndex = 13;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost1.Location = new System.Drawing.Point(0, 0);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(620, 320);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.pieChart1;
             // 
             // UC_ManageExpenses
             // 
@@ -316,6 +321,7 @@
         private System.Windows.Forms.Panel panel8;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
         private System.Windows.Forms.Panel panel9;
-        private LiveCharts.WinForms.PieChart pieChart1;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private LiveCharts.Wpf.PieChart pieChart1;
     }
 }

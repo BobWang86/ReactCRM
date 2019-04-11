@@ -11,6 +11,7 @@ using ReactCRM.Forms;
 using ReactCRM.dbConn;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.Windows.Media;
 
 namespace ReactCRM.UserControls
 {
@@ -29,7 +30,7 @@ namespace ReactCRM.UserControls
             expenses.connect();
             if (expenses.connOpen() == true)
             {
-                dgvExpenses.DataSource = expenses.Query($"SELECT * FROM `tbExpense`").Tables[0];
+                dgvExpenses.DataSource = expenses.query($"SELECT * FROM `tbExpense`").Tables[0];
             }
             expenses.connClose();
 
@@ -38,7 +39,7 @@ namespace ReactCRM.UserControls
                 selectedExpense.Columns.Add(column.Name, typeof(string));
             }
 
-            StackChart();
+            LineChart();
 
             DonutChart();
         }
@@ -66,7 +67,7 @@ namespace ReactCRM.UserControls
                 if (expenses.connOpen() == true)
                 {
                     expenses.deleteExpense(ExpenseID);
-                    dgvExpenses.DataSource = expenses.Query($"SELECT * FROM `tbExpense`").Tables[0];
+                    dgvExpenses.DataSource = expenses.query($"SELECT * FROM `tbExpense`").Tables[0];
                 }
                 expenses.connClose();
             }
@@ -77,9 +78,13 @@ namespace ReactCRM.UserControls
             expenses.connect();
             if (expenses.connOpen() == true)
             {
-                dgvExpenses.DataSource = expenses.Query($"SELECT * FROM `tbExpense`").Tables[0];
+                dgvExpenses.DataSource = expenses.query($"SELECT * FROM `tbExpense`").Tables[0];
             }
             expenses.connClose();
+
+            LineChartReload();
+
+            DonutChart();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -104,78 +109,116 @@ namespace ReactCRM.UserControls
             }
         }
 
-        private void StackChart()
+        private void LineChart()
         {
+            cartesianChart1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
+
+            List<double> Expenses = expenses.getExpensesByDate(expenses);
+
             cartesianChart1.Series = new SeriesCollection
             {
-                new StackedColumnSeries
+                new LineSeries
                 {
-                    Values = new ChartValues<double> {4, 5, 6, 8},
-                    StackMode = StackMode.Values, // this is not necessary, values is the default stack mode
-                    DataLabels = true
-                },
-                new StackedColumnSeries
-                {
-                    Values = new ChartValues<double> {2, 5, 6, 7},
-                    StackMode = StackMode.Values,
-                    DataLabels = true
+                    Title = "Expenses",
+                    Values = new ChartValues<double> {Expenses[0], Expenses[1], Expenses[2], Expenses[3], Expenses[4], Expenses[5] }
                 }
             };
-
-            //adding series updates and animates the chart
-            cartesianChart1.Series.Add(new StackedColumnSeries
-            {
-                Values = new ChartValues<double> { 6, 2, 7 },
-                StackMode = StackMode.Values
-            });
-
-            //adding values also updates and animates
-            cartesianChart1.Series[2].Values.Add(4d);
-
+            
             cartesianChart1.AxisX.Add(new Axis
             {
-                Title = "Browser",
-                Labels = new[] { "Chrome", "Mozilla", "Opera", "IE" },
-                Separator = DefaultAxes.CleanSeparator
+                Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May", "June" },
+                Separator = new Separator
+                {
+                    Step = 1,
+                    IsEnabled = false
+                },
+                LabelsRotation = 15
             });
 
             cartesianChart1.AxisY.Add(new Axis
             {
-                Title = "Usage",
-                LabelFormatter = value => value + " Mill"
+                Title = "Expenses",
+                LabelFormatter = value => value.ToString("C")
             });
+        }
+
+        private void LineChartReload()
+        {
+            List<double> Expenses = expenses.getExpensesByDate(expenses);
+
+            cartesianChart1.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "Expenses",
+                    Values = new ChartValues<double> {Expenses[0], Expenses[1], Expenses[2], Expenses[3], Expenses[4], Expenses[5] }
+                }
+            };
         }
 
         private void DonutChart()
         {
+            pieChart1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
+
             pieChart1.InnerRadius = 100;
             pieChart1.LegendLocation = LegendLocation.Right;
+
+            List<double> Expenses = expenses.getExpensesByType(expenses);
 
             pieChart1.Series = new SeriesCollection
             {
                 new PieSeries
                 {
-                    Title = "Chrome",
-                    Values = new ChartValues<double> {8},
-                    PushOut = 15,
+                    Title = "Employee salaries",
+                    Values = new ChartValues<double> {Expenses[0]},
                     DataLabels = true
                 },
                 new PieSeries
                 {
-                    Title = "Mozilla",
-                    Values = new ChartValues<double> {6},
+                    Title = "Office Expenses",
+                    Values = new ChartValues<double> {Expenses[1]},
                     DataLabels = true
                 },
                 new PieSeries
                 {
-                    Title = "Opera",
-                    Values = new ChartValues<double> {10},
+                    Title = "Vehicles Expenses",
+                    Values = new ChartValues<double> {Expenses[2]},
                     DataLabels = true
                 },
                 new PieSeries
                 {
-                    Title = "Explorer",
-                    Values = new ChartValues<double> {4},
+                    Title = "Equipment Expenses",
+                    Values = new ChartValues<double> {Expenses[3]},
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Maintenance Expenses",
+                    Values = new ChartValues<double> {Expenses[4]},
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Business Insurances",
+                    Values = new ChartValues<double> {Expenses[5]},
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Consultancy Fees",
+                    Values = new ChartValues<double> {Expenses[6]},
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Marketing Costs",
+                    Values = new ChartValues<double> {Expenses[7]},
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Miscellaneous Expenses",
+                    Values = new ChartValues<double> {Expenses[8]},
                     DataLabels = true
                 }
             };

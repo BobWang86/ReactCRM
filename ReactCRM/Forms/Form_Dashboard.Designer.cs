@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dashboard));
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelSide = new System.Windows.Forms.Panel();
@@ -46,7 +45,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lbUserEmail = new System.Windows.Forms.Label();
             this.lbWelcome = new System.Windows.Forms.Label();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.panelControls = new System.Windows.Forms.Panel();
             this.panelLeft.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -278,10 +276,6 @@
             this.lbWelcome.TabIndex = 0;
             this.lbWelcome.Text = "Welcome:";
             // 
-            // timer
-            // 
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // panelControls
             // 
             this.panelControls.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -331,7 +325,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lbUserEmail;
         private System.Windows.Forms.Label labelTime;
-        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Panel panelControls;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

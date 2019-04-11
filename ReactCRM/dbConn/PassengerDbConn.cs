@@ -68,7 +68,7 @@ namespace ReactCRM.dbConn
         //Get all passengers that belong to one user account.
         public DataTable getPassengerByUser(PassengerDbConn mysqlConn, string UserID)
         {
-            DataTable output = mysqlConn.Query($"SELECT CusID FROM `tblpassenger` WHERE `UserID`={UserID}").Tables[0];
+            DataTable output = mysqlConn.query($"SELECT CusID FROM `tblpassenger` WHERE `UserID`={UserID}").Tables[0];
 
             return output;
         }

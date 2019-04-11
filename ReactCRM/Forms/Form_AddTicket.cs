@@ -24,7 +24,7 @@ namespace ReactCRM.Forms
             clients.connect();
             if (clients.connOpen() == true)
             {
-                dgvClients.DataSource = clients.Query($"SELECT * FROM `tbClient`").Tables[0];
+                dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
             }
             clients.connClose();
 

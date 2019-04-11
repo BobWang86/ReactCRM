@@ -107,12 +107,15 @@
             // 
             // dgvClients
             // 
-            this.dgvClients.AllowUserToOrderColumns = true;
+            this.dgvClients.AllowUserToAddRows = false;
+            this.dgvClients.AllowUserToDeleteRows = false;
             this.dgvClients.BackgroundColor = System.Drawing.Color.White;
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClients.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClients.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvClients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
             this.dgvClients.Location = new System.Drawing.Point(0, 0);
+            this.dgvClients.MultiSelect = false;
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClients.Size = new System.Drawing.Size(670, 200);

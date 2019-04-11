@@ -16,7 +16,6 @@ namespace ReactCRM.Forms
         public Form_Dashboard()
         {
             InitializeComponent();
-            timer.Start();
             UC_Home ucHome = new UC_Home();
             AddControlsToPanel(ucHome);
         }
@@ -77,12 +76,6 @@ namespace ReactCRM.Forms
         private void btnSettings_Click(object sender, EventArgs e)
         {
             moveSidePanel(btnSettings);
-        }
-
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            DateTime time = DateTime.Now;
-            labelTime.Text = time.ToString("HH:MM:ss");
         }
     }
 }

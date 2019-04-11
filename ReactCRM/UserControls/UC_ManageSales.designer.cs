@@ -46,7 +46,8 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.pieChart1 = new LiveCharts.Wpf.PieChart();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -218,13 +219,16 @@
             // 
             // dgvSales
             // 
-            this.dgvSales.AllowUserToOrderColumns = true;
+            this.dgvSales.AllowUserToAddRows = false;
+            this.dgvSales.AllowUserToDeleteRows = false;
             this.dgvSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSales.BackgroundColor = System.Drawing.Color.White;
             this.dgvSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSales.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvSales.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
             this.dgvSales.Location = new System.Drawing.Point(0, 0);
+            this.dgvSales.MultiSelect = false;
             this.dgvSales.Name = "dgvSales";
             this.dgvSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSales.Size = new System.Drawing.Size(420, 540);
@@ -253,21 +257,22 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.Controls.Add(this.pieChart1);
+            this.panel9.Controls.Add(this.elementHost1);
             this.panel9.ForeColor = System.Drawing.Color.Black;
             this.panel9.Location = new System.Drawing.Point(10, 330);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(620, 320);
             this.panel9.TabIndex = 15;
             // 
-            // pieChart1
+            // elementHost1
             // 
-            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart1.Location = new System.Drawing.Point(0, 0);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(620, 320);
-            this.pieChart1.TabIndex = 0;
-            this.pieChart1.Text = "pieChart1";
+            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost1.Location = new System.Drawing.Point(0, 0);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(620, 320);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.pieChart1;
             // 
             // UC_ManageSales
             // 
@@ -316,6 +321,7 @@
         private System.Windows.Forms.Panel panel8;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
         private System.Windows.Forms.Panel panel9;
-        private LiveCharts.WinForms.PieChart pieChart1;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private LiveCharts.Wpf.PieChart pieChart1;
     }
 }

@@ -31,7 +31,7 @@ namespace ReactCRM
             passengerDbConn.connect();
             if (passengerDbConn.connOpen() == true)
             {
-                dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
+                dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
             }
             passengerDbConn.connClose();
 
@@ -67,7 +67,7 @@ namespace ReactCRM
             if (passengerDbConn.connOpen() == true && ValidateForm())
             {
                 passengerDbConn.insertPassenger(tbFName.Text, tbLName.Text, tbTelNum.Text, tbNation.Text, cbGender.Text, dtpBirthDate.Text, UserID);
-                dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
+                dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
             }
             passengerDbConn.connClose();
         }
@@ -78,7 +78,7 @@ namespace ReactCRM
             if (passengerDbConn.connOpen() == true && ValidateForm())
             {
                 passengerDbConn.updatePassenger(PassengerID, tbFName.Text, tbLName.Text, tbTelNum.Text, tbNation.Text, cbGender.Text, dtpBirthDate.Text, UserID);
-                dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
+                dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
             }
             passengerDbConn.connClose();
         }
@@ -92,7 +92,7 @@ namespace ReactCRM
                 if (passengerDbConn.connOpen() == true)
                 {
                     passengerDbConn.deletePassenger(PassengerID);
-                    dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
+                    dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
                 }
                 passengerDbConn.connClose();
             }

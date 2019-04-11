@@ -29,7 +29,7 @@ namespace ReactCRM.UserControls
             sales.connect();
             if (sales.connOpen() == true)
             {
-                dgvSales.DataSource = sales.Query($"SELECT * FROM `tbSale`").Tables[0];
+                dgvSales.DataSource = sales.query($"SELECT * FROM `tbSale`").Tables[0];
             }
             sales.connClose();
 
@@ -66,7 +66,7 @@ namespace ReactCRM.UserControls
                 if (sales.connOpen() == true)
                 {
                     sales.deleteSale(SaleID);
-                    dgvSales.DataSource = sales.Query($"SELECT * FROM `tbClient`").Tables[0];
+                    dgvSales.DataSource = sales.query($"SELECT * FROM `tbClient`").Tables[0];
                 }
                 sales.connClose();
             }
@@ -77,9 +77,13 @@ namespace ReactCRM.UserControls
             sales.connect();
             if (sales.connOpen() == true)
             {
-                dgvSales.DataSource = sales.Query($"SELECT * FROM `tbSale`").Tables[0];
+                dgvSales.DataSource = sales.query($"SELECT * FROM `tbSale`").Tables[0];
             }
             sales.connClose();
+
+            LineChartReload();
+
+            PieChart();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -106,32 +110,51 @@ namespace ReactCRM.UserControls
 
         private void LineChart()
         {
+            cartesianChart1.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+
+            List<double> productA = sales.getSales(sales, "Interactive Timetabling");
+            List<double> productB = sales.getSales(sales, "Automated Timetabling");
+            List<double> productC = sales.getSales(sales, "Attendance Monitoring");
+            List<double> productD = sales.getSales(sales, "Room Booking");
+            List<double> productE = sales.getSales(sales, "Pay Claim");
+            List<double> Products = new List<double>();
+            for (int i = 0; i < 6; i++)
+            {
+                Products.Add(productA[i] + productB[i] + productC[i] + productD[i] + productE[i]);
+            }
+
+            List<double> serviceA = sales.getSales(sales, "Integration");
+            List<double> serviceB = sales.getSales(sales, "Consultancy");
+            List<double> serviceC = sales.getSales(sales, "Training");
+            List<double> Services = new List<double>();
+            for (int i = 0; i < 6; i++)
+            {
+                Services.Add(serviceA[i] + serviceB[i] + serviceC[i]);
+            }
+
             cartesianChart1.Series = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
-                    Values = new ChartValues<double> {4, 6, 5, 2, 7}
+                    Title = "Products",
+                    Values = new ChartValues<double> {Products[0], Products[1], Products[2], Products[3], Products[4], Products[5] }
                 },
                 new LineSeries
                 {
-                    Title = "Series 2",
-                    Values = new ChartValues<double> {6, 7, 3, 4, 6},
-                    PointGeometry = null
-                },
-                new LineSeries
-                {
-                    Title = "Series 2",
-                    Values = new ChartValues<double> {5, 2, 8, 3},
-                    PointGeometry = DefaultGeometries.Square,
-                    PointGeometrySize = 15
+                    Title = "Services",
+                    Values = new ChartValues<double> {Services[0], Services[1], Services[2], Services[3], Services[4], Services[5]},
                 }
             };
 
             cartesianChart1.AxisX.Add(new Axis
             {
-                Title = "Month",
-                Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" }
+                Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May", "June" },
+                Separator = new Separator
+                {
+                    Step = 1,
+                    IsEnabled = false
+                },
+                LabelsRotation = 15
             });
 
             cartesianChart1.AxisY.Add(new Axis
@@ -141,60 +164,115 @@ namespace ReactCRM.UserControls
             });
 
             cartesianChart1.LegendLocation = LegendLocation.Right;
+        }
 
-            //modifying the series collection will animate and update the chart
-            cartesianChart1.Series.Add(new LineSeries
+        private void LineChartReload()
+        {
+            List<double> productA = sales.getSales(sales, "Interactive Timetabling");
+            List<double> productB = sales.getSales(sales, "Automated Timetabling");
+            List<double> productC = sales.getSales(sales, "Attendance Monitoring");
+            List<double> productD = sales.getSales(sales, "Room Booking");
+            List<double> productE = sales.getSales(sales, "Pay Claim");
+            List<double> Products = new List<double>();
+            for (int i = 0; i < 6; i++)
             {
-                Values = new ChartValues<double> { 5, 3, 2, 4, 5 },
-                LineSmoothness = 0, //straight lines, 1 really smooth lines
-                PointGeometry = Geometry.Parse("m 25 70.36218 20 -28 -20 22 -8 -6 z"),
-                PointGeometrySize = 50,
-                PointForeground = Brushes.Gray
-            });
+                Products.Add(productA[i] + productB[i] + productC[i] + productD[i] + productE[i]);
+            }
 
-            //modifying any series values will also animate and update the chart
-            cartesianChart1.Series[2].Values.Add(5d);
+            List<double> serviceA = sales.getSales(sales, "Integration");
+            List<double> serviceB = sales.getSales(sales, "Consultancy");
+            List<double> serviceC = sales.getSales(sales, "Training");
+            List<double> Services = new List<double>();
+            for (int i = 0; i < 6; i++)
+            {
+                Services.Add(serviceA[i] + serviceB[i] + serviceC[i]);
+            }
+
+            cartesianChart1.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "Product",
+                    Values = new ChartValues<double> {Products[0], Products[1], Products[2], Products[3], Products[4], Products[5] }
+                },
+                new LineSeries
+                {
+                    Title = "Service",
+                    Values = new ChartValues<double> {Services[0], Services[1], Services[2], Services[3], Services[4], Services[5]},
+                }
+            };
         }
 
         private void PieChart()
         {
+            pieChart1.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+
             Func<ChartPoint, string> labelPoint = chartPoint =>
                 string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            List<double> Sales = sales.getSalesByType(sales);
 
             pieChart1.Series = new SeriesCollection
             {
                 new PieSeries
                 {
-                    Title = "Maria",
-                    Values = new ChartValues<double> {3},
-                    PushOut = 15,
+                    Title = "Interactive Timetabling",
+                    Values = new ChartValues<double> { Sales[0]},
                     DataLabels = true,
                     LabelPoint = labelPoint
                 },
                 new PieSeries
                 {
-                    Title = "Charles",
-                    Values = new ChartValues<double> {4},
+                    Title = "Automated Timetabling",
+                    Values = new ChartValues<double> { Sales[1]},
                     DataLabels = true,
                     LabelPoint = labelPoint
                 },
                 new PieSeries
                 {
-                    Title = "Frida",
-                    Values = new ChartValues<double> {6},
+                    Title = "Attendance Monitoring",
+                    Values = new ChartValues<double> { Sales[2]},
                     DataLabels = true,
                     LabelPoint = labelPoint
                 },
                 new PieSeries
                 {
-                    Title = "Frederic",
-                    Values = new ChartValues<double> {2},
+                    Title = "Room Booking",
+                    Values = new ChartValues<double> { Sales[3]},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
+                new PieSeries
+                {
+                    Title = "Pay Claim",
+                    Values = new ChartValues<double> { Sales[4]},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
+                new PieSeries
+                {
+                    Title = "Integration",
+                    Values = new ChartValues<double> { Sales[5]},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
+                new PieSeries
+                {
+                    Title = "Consultancy",
+                    Values = new ChartValues<double> { Sales[6]},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
+                new PieSeries
+                {
+                    Title = "Training",
+                    Values = new ChartValues<double> { Sales[7]},
                     DataLabels = true,
                     LabelPoint = labelPoint
                 }
             };
 
-            pieChart1.LegendLocation = LegendLocation.Bottom;
+            pieChart1.LegendLocation = LegendLocation.Right;
         }
     }
 }

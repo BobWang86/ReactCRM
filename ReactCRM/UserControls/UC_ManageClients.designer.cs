@@ -45,9 +45,10 @@
             this.dgvClients = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
-            this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.pieChart1 = new LiveCharts.Wpf.PieChart();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
@@ -226,13 +227,16 @@
             // 
             // dgvClients
             // 
-            this.dgvClients.AllowUserToOrderColumns = true;
+            this.dgvClients.AllowUserToAddRows = false;
+            this.dgvClients.AllowUserToDeleteRows = false;
             this.dgvClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvClients.BackgroundColor = System.Drawing.Color.White;
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClients.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClients.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvClients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
             this.dgvClients.Location = new System.Drawing.Point(0, 0);
+            this.dgvClients.MultiSelect = false;
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClients.Size = new System.Drawing.Size(1045, 260);
@@ -256,16 +260,6 @@
             this.panel8.Size = new System.Drawing.Size(520, 320);
             this.panel8.TabIndex = 5;
             // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.Controls.Add(this.pieChart1);
-            this.panel9.ForeColor = System.Drawing.Color.Black;
-            this.panel9.Location = new System.Drawing.Point(535, 330);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(520, 320);
-            this.panel9.TabIndex = 5;
-            // 
             // cartesianChart1
             // 
             this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -275,18 +269,30 @@
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
             // 
-            // pieChart1
+            // panel9
             // 
-            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart1.Location = new System.Drawing.Point(0, 0);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(520, 320);
-            this.pieChart1.TabIndex = 0;
-            this.pieChart1.Text = "pieChart1";
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Controls.Add(this.elementHost1);
+            this.panel9.ForeColor = System.Drawing.Color.Black;
+            this.panel9.Location = new System.Drawing.Point(535, 330);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(520, 320);
+            this.panel9.TabIndex = 5;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost1.Location = new System.Drawing.Point(0, 0);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(520, 320);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.pieChart1;
             // 
             // UC_ManageClients
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
@@ -329,8 +335,9 @@
         private System.Windows.Forms.Button btnEmail;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
-        private LiveCharts.WinForms.PieChart pieChart1;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private LiveCharts.Wpf.PieChart pieChart1;
     }
 }

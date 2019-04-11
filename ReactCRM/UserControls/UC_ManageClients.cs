@@ -11,6 +11,7 @@ using ReactCRM.Forms;
 using ReactCRM.dbConn;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.Windows.Media;
 
 namespace ReactCRM.UserControls
 {
@@ -29,7 +30,7 @@ namespace ReactCRM.UserControls
             clients.connect();
             if (clients.connOpen() == true)
             {
-                dgvClients.DataSource = clients.Query($"SELECT * FROM `tbClient`").Tables[0];
+                dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
             }
             clients.connClose();
 
@@ -66,7 +67,7 @@ namespace ReactCRM.UserControls
                 if (clients.connOpen() == true)
                 {
                     clients.deleteClient(ClientID);
-                    dgvClients.DataSource = clients.Query($"SELECT * FROM `tbClient`").Tables[0];
+                    dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
                 }
                 clients.connClose();
             }
@@ -77,9 +78,13 @@ namespace ReactCRM.UserControls
             clients.connect();
             if (clients.connOpen() == true)
             {
-                dgvClients.DataSource = clients.Query($"SELECT * FROM `tbClient`").Tables[0];
+                dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
             }
             clients.connClose();
+
+            LineChartReload();
+
+            PieChart();
         }
 
         private void btnEmail_Click(object sender, EventArgs e)
@@ -111,76 +116,113 @@ namespace ReactCRM.UserControls
 
         private void LineChart()
         {
+            cartesianChart1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
+
+            List<int> Clients = clients.getClientByMonth(clients);
+
             cartesianChart1.Series = new SeriesCollection
             {
                 new ColumnSeries
                 {
-                    Title = "2015",
-                    Values = new ChartValues<double> { 10, 50, 39, 50 }
+                    Title = "2019",
+                    Values = new ChartValues<int> { Clients[0], Clients[1], Clients[2], Clients[3], Clients[4], Clients[5] }
                 }
             };
 
-            //adding series will update and animate the chart automatically
-            cartesianChart1.Series.Add(new ColumnSeries
-            {
-                Title = "2016",
-                Values = new ChartValues<double> { 11, 56, 42 }
-            });
-
-            //adding values updates and animates the chart automatically
-            cartesianChart1.Series[1].Values.Add(48d);
-
             cartesianChart1.AxisX.Add(new Axis
             {
-                Title = "Sales Man",
-                Labels = new[] { "Maria", "Susan", "Charles", "Frida" }
+                Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May", "June" },
+                Separator = new Separator
+                {
+                    Step = 1,
+                    IsEnabled = false 
+                },
+                LabelsRotation = 15
             });
 
             cartesianChart1.AxisY.Add(new Axis
             {
-                Title = "Sold Apps",
+                Title = "Clients",
                 LabelFormatter = value => value.ToString("N")
             });
         }
 
+        private void LineChartReload()
+        {
+            List<int> Clients = clients.getClientByMonth(clients);
+
+            cartesianChart1.Series = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "2019",
+                    Values = new ChartValues<int> { Clients[0], Clients[1], Clients[2], Clients[3], Clients[4], Clients[5] }
+                }
+            };
+        }
+
         private void PieChart()
         {
+            pieChart1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
+
             Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            List<int> Clients = clients.getClientBySource(clients);
 
             pieChart1.Series = new SeriesCollection
             {
                 new PieSeries
                 {
-                    Title = "Maria",
-                    Values = new ChartValues<double> {3},
-                    PushOut = 15,
+                    Title = "Call",
+                    Values = new ChartValues<double> {Clients[0]},
                     DataLabels = true,
                     LabelPoint = labelPoint
                 },
                 new PieSeries
                 {
-                    Title = "Charles",
-                    Values = new ChartValues<double> {4},
+                    Title = "Email",
+                    Values = new ChartValues<double> {Clients[1]},
                     DataLabels = true,
                     LabelPoint = labelPoint
                 },
                 new PieSeries
                 {
-                    Title = "Frida",
-                    Values = new ChartValues<double> {6},
+                    Title = "Referal",
+                    Values = new ChartValues<double> {Clients[2]},
                     DataLabels = true,
                     LabelPoint = labelPoint
                 },
                 new PieSeries
                 {
-                    Title = "Frederic",
-                    Values = new ChartValues<double> {2},
+                    Title = "Partner",
+                    Values = new ChartValues<double> {Clients[3]},
                     DataLabels = true,
                     LabelPoint = labelPoint
-                }
+                },
+                new PieSeries
+                {
+                    Title = "Campaign",
+                    Values = new ChartValues<double> {Clients[4]},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
+                new PieSeries
+                {
+                    Title = "WebForm",
+                    Values = new ChartValues<double> {Clients[5]},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
+                new PieSeries
+                {
+                    Title = "SocialMedia",
+                    Values = new ChartValues<double> {Clients[6]},
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+                },
             };
 
-            pieChart1.LegendLocation = LegendLocation.Bottom;
+            pieChart1.LegendLocation = LegendLocation.Right;
         }
     }
 }

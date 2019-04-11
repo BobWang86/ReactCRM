@@ -27,7 +27,7 @@ namespace ReactCRM.UserControls
             tickets.connect();
             if (tickets.connOpen() == true)
             {
-                dgvTickets.DataSource = tickets.Query($"SELECT * FROM `tbTicket`").Tables[0];
+                dgvTickets.DataSource = tickets.query($"SELECT * FROM `tbTicket`").Tables[0];
             }
             tickets.connClose();
 
@@ -60,7 +60,7 @@ namespace ReactCRM.UserControls
                 if (tickets.connOpen() == true)
                 {
                     tickets.deleteTicket(TicketID);
-                    dgvTickets.DataSource = tickets.Query($"SELECT * FROM `tbTicket`").Tables[0];
+                    dgvTickets.DataSource = tickets.query($"SELECT * FROM `tbTicket`").Tables[0];
                 }
                 tickets.connClose();
             }
@@ -71,7 +71,7 @@ namespace ReactCRM.UserControls
             tickets.connect();
             if (tickets.connOpen() == true)
             {
-                dgvTickets.DataSource = tickets.Query($"SELECT * FROM `tbTicket`").Tables[0];
+                dgvTickets.DataSource = tickets.query($"SELECT * FROM `tbTicket`").Tables[0];
             }
             tickets.connClose();
         }

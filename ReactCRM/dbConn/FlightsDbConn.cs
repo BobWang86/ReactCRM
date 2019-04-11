@@ -95,7 +95,7 @@ namespace ReactCRM.dbConn
         //Search for flight by specifying both city and date.
         public DataTable searchFlight(FlightsDbConn mysqlConn, string city, string date)
         {
-            DataTable output = mysqlConn.Query($"SELECT * FROM `viewFlight` WHERE Departure_Time LIKE CONCAT('%', '{date}', '%') && (Departure_City LIKE CONCAT('%', '{city}', '%') || Arrival_City LIKE CONCAT('%', '{city}','%'))").Tables[0];
+            DataTable output = mysqlConn.query($"SELECT * FROM `viewFlight` WHERE Departure_Time LIKE CONCAT('%', '{date}', '%') && (Departure_City LIKE CONCAT('%', '{city}', '%') || Arrival_City LIKE CONCAT('%', '{city}','%'))").Tables[0];
 
             return output;
         }
@@ -103,7 +103,7 @@ namespace ReactCRM.dbConn
         //Search for flight by specifying only date.
         public DataTable searchFlightByDate(FlightsDbConn mysqlConn, string date)
         {
-            DataTable output = mysqlConn.Query($"SELECT * FROM `viewFlight` WHERE Departure_Time LIKE CONCAT('%', '{date}', '%') || Arrival_Time LIKE CONCAT('%', '{date}','%')").Tables[0];
+            DataTable output = mysqlConn.query($"SELECT * FROM `viewFlight` WHERE Departure_Time LIKE CONCAT('%', '{date}', '%') || Arrival_Time LIKE CONCAT('%', '{date}','%')").Tables[0];
 
             return output;
         }
@@ -111,7 +111,7 @@ namespace ReactCRM.dbConn
         //Get all aircraft models from database.
         public DataTable GetAircraftModel(FlightsDbConn mysqlConn)
         {
-            DataTable output = mysqlConn.Query("SELECT * FROM `tblaircraft`").Tables[0];
+            DataTable output = mysqlConn.query("SELECT * FROM `tblaircraft`").Tables[0];
 
             return output;
         }
@@ -119,7 +119,7 @@ namespace ReactCRM.dbConn
         //Get all flight cities from database.
         public DataTable GetAirportName(FlightsDbConn mysqlConn)
         {
-            DataTable output = mysqlConn.Query("SELECT * FROM `tblairport`").Tables[0];
+            DataTable output = mysqlConn.query("SELECT * FROM `tblairport`").Tables[0];
 
             return output;
         }

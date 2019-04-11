@@ -219,20 +219,23 @@
             // 
             // dgvTickets
             // 
-            this.dgvTickets.AllowUserToOrderColumns = true;
+            this.dgvTickets.AllowUserToAddRows = false;
+            this.dgvTickets.AllowUserToDeleteRows = false;
             this.dgvTickets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTickets.BackgroundColor = System.Drawing.Color.White;
             this.dgvTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTickets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTickets.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvTickets.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
             this.dgvTickets.Location = new System.Drawing.Point(0, 0);
+            this.dgvTickets.MultiSelect = false;
             this.dgvTickets.Name = "dgvTickets";
             this.dgvTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTickets.Size = new System.Drawing.Size(1045, 590);
             this.dgvTickets.TabIndex = 0;
             this.dgvTickets.SelectionChanged += new System.EventHandler(this.dgvTickets_SelectionChanged);
             // 
-            // ManageTickets
+            // UC_ManageTickets
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
@@ -244,7 +247,7 @@
             this.Controls.Add(this.panel6);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.Name = "ManageTickets";
+            this.Name = "UC_ManageTickets";
             this.Size = new System.Drawing.Size(1065, 660);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();

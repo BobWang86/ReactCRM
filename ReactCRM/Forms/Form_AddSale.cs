@@ -1,4 +1,6 @@
-﻿using ReactCRM.dbConn;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using ReactCRM.dbConn;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +26,7 @@ namespace ReactCRM.Forms
             clients.connect();
             if (clients.connOpen() == true)
             {
-                dgvClients.DataSource = clients.Query($"SELECT * FROM `tbClient`").Tables[0];
+                dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
             }
             clients.connClose();
 

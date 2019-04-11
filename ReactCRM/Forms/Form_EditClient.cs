@@ -21,6 +21,8 @@ namespace ReactCRM.Forms
         {
             InitializeComponent();
 
+            BindOptions();
+
             ClientID = selectedClient.Rows[0][0].ToString();
             tbName.Text = selectedClient.Rows[0][1].ToString();
             tbEmail.Text = selectedClient.Rows[0][2].ToString();
@@ -31,6 +33,14 @@ namespace ReactCRM.Forms
             tbPipeline.Text = selectedClient.Rows[0][7].ToString();
             AddDate = selectedClient.Rows[0][8].ToString();
             tbDate.Text = selectedClient.Rows[0][9].ToString();
+        }
+
+        private void BindOptions()
+        {
+            tbPipeline.DropDownStyle = ComboBoxStyle.DropDownList;
+            tbSource.DropDownStyle = ComboBoxStyle.DropDownList;
+            tbPipeline.Items.AddRange(new string[] { "Awareness", "Interest", "Decision", "Action" });
+            tbSource.Items.AddRange(new string[] { "Call", "Email", "Referal", "Partner", "Campaign", "WebForm", "SocialMedia" });
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

@@ -61,7 +61,7 @@ namespace ReactCRM.dbConn
         //Get user's booking records from a MySQL View that joins three tables together. 
         public DataTable DisplayUserBookingHistory(BookingsDbConn mysqlConn, string userID)
         {
-            DataTable output = mysqlConn.Query($"SELECT `BookingID`, `FlightID`, `FirstName`, `LastName`, `Aircraft`, `Departure_City`, `Arrival_City`, `Duration`, `Departure_DateTime`, `Arrival_DateTime`, `BookingPrice`, `Booking_DateTime` FROM `viewBookingHistory` WHERE `UserID`={userID}").Tables[0];
+            DataTable output = mysqlConn.query($"SELECT `BookingID`, `FlightID`, `FirstName`, `LastName`, `Aircraft`, `Departure_City`, `Arrival_City`, `Duration`, `Departure_DateTime`, `Arrival_DateTime`, `BookingPrice`, `Booking_DateTime` FROM `viewBookingHistory` WHERE `UserID`={userID}").Tables[0];
 
             return output;
         }
@@ -69,7 +69,7 @@ namespace ReactCRM.dbConn
         //Get all booking records from a MySQL View that joins three tables together. 
         public DataTable DisplayAllBookingHistory(BookingsDbConn mysqlConn)
         {
-            DataTable output = mysqlConn.Query("SELECT `BookingID`, `FlightID`, `FirstName`, `LastName`, `Aircraft`, `Departure_City`, `Arrival_City`, `Duration`, `Departure_DateTime`, `Arrival_DateTime`, `BookingPrice`, `Booking_DateTime` FROM `viewBookingHistory`").Tables[0];
+            DataTable output = mysqlConn.query("SELECT `BookingID`, `FlightID`, `FirstName`, `LastName`, `Aircraft`, `Departure_City`, `Arrival_City`, `Duration`, `Departure_DateTime`, `Arrival_DateTime`, `BookingPrice`, `Booking_DateTime` FROM `viewBookingHistory`").Tables[0];
 
             return output;
         }

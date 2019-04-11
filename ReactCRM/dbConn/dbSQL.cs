@@ -59,12 +59,20 @@ namespace ReactCRM.dbConn
             catch (MySqlException err) { MessageBox.Show("Error: " + err.Message); return false; }
         }
 
-        public DataSet Query(string sql)
+        public DataSet query(string sql)
         {//Run sql query in argument and return dataset
             sqlDA = new MySqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();
             sqlDA.Fill(ds);
             connClose();
+            return ds;
+        }
+
+        public DataSet superQuery(string sql)
+        {//Run sql query in argument and return dataset
+            sqlDA = new MySqlDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+            sqlDA.Fill(ds);
             return ds;
         }
     }

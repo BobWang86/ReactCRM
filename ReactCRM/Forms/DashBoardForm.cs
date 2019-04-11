@@ -106,7 +106,7 @@ namespace ReactCRM.Forms
         {
             if (flightDbConn.connOpen() == true)
             {
-                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
             }
             flightDbConn.connClose();
         }

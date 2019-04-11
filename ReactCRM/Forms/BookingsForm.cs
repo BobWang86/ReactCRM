@@ -51,7 +51,7 @@ namespace ReactCRM
             passengerDbConn.connect();
             if (passengerDbConn.connOpen() == true)
             {
-                dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={userID}").Tables[0];
+                dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={userID}").Tables[0];
             }
             passengerDbConn.connClose();
         }
@@ -145,7 +145,7 @@ namespace ReactCRM
             {
                 if (passengerDbConn.connOpen() == true)
                 {
-                    dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={userID}").Tables[0];
+                    dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={userID}").Tables[0];
                 }
                 passengerDbConn.connClose();
             }

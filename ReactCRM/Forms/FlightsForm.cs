@@ -47,7 +47,7 @@ namespace ReactCRM
             //Display all flight information stored in the database.
             if (flightDbConn.connOpen() == true)
             {
-                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
 
                 //Refresh the content of flightCities and flightModels Lists.
                 RefreshList();
@@ -95,7 +95,7 @@ namespace ReactCRM
             if (flightDbConn.connOpen() == true && ValidateForm())
             {
                 flightDbConn.insertFlight(cbAirCraft.Text, dtpDeparDateTime.Text, dtpArrDateTime.Text, cbDepartureCity.Text, cbArrivalCity.Text, GetFlightDuration(), tbAdultPrice.Text, tbChildPrice.Text, tbInfantPrice.Text);
-                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
             }
             flightDbConn.connClose();
         }
@@ -106,7 +106,7 @@ namespace ReactCRM
             if (flightDbConn.connOpen() == true && ValidateForm())
             {
                 flightDbConn.updateFlight(tbFlightID.Text, cbAirCraft.Text, dtpDeparDateTime.Text, dtpArrDateTime.Text, cbDepartureCity.Text, cbArrivalCity.Text, GetFlightDuration(), tbAdultPrice.Text, tbChildPrice.Text, tbInfantPrice.Text);
-                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
             }
             flightDbConn.connClose();
         }
@@ -117,7 +117,7 @@ namespace ReactCRM
             if (flightDbConn.connOpen() == true)
             {
                 flightDbConn.deleteFlight(tbFlightID.Text);
-                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
             }
             flightDbConn.connClose();
         }
@@ -279,7 +279,7 @@ namespace ReactCRM
 
             if (flightDbConn.connOpen() == true)
             {
-                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
 
                 MessageBox.Show($"Flights added to {dateGenerator}!", "Flights Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
