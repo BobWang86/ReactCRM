@@ -15,6 +15,8 @@ namespace ReactCRM.Forms
     {
         string TicketID;
 
+        string ClientID;
+
         string ReportDate;
 
         dbTicket tickets = new dbTicket();
@@ -24,12 +26,13 @@ namespace ReactCRM.Forms
             InitializeComponent();
 
             TicketID = selectedTicket.Rows[0][0].ToString();
-            tbClient.Text = selectedTicket.Rows[0][1].ToString();
-            tbDetail.Text = selectedTicket.Rows[0][2].ToString();
-            tbType.Text = selectedTicket.Rows[0][3].ToString();
-            tbStatus.Text = selectedTicket.Rows[0][4].ToString();
-            ReportDate = selectedTicket.Rows[0][5].ToString();
-            tbDate.Text = selectedTicket.Rows[0][6].ToString();
+            ClientID = selectedTicket.Rows[0][1].ToString();
+            tbClient.Text = selectedTicket.Rows[0][2].ToString();
+            tbDetail.Text = selectedTicket.Rows[0][5].ToString();
+            tbType.Text = selectedTicket.Rows[0][6].ToString();
+            tbStatus.Text = selectedTicket.Rows[0][7].ToString();
+            ReportDate = selectedTicket.Rows[0][8].ToString();
+            tbDate.Text = selectedTicket.Rows[0][9].ToString();
 
             tbType.DropDownStyle = ComboBoxStyle.DropDownList;
             tbType.Items.AddRange(new string[] { "Order Status", "Bug Report", "Feature Request", "Technical Support" });
@@ -39,10 +42,10 @@ namespace ReactCRM.Forms
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            tickets.connect();
-            if (tickets.connOpen() == true && FormValidate())
+            tickets.Connect();
+            if (tickets.ConnOpen() == true && FormValidate())
             {
-                tickets.updateTicket(TicketID, tbClient.Text, tbDetail.Text, tbType.Text, tbStatus.Text, ReportDate, tbDate.Value.ToString("yyyy-MM-dd"));
+                tickets.UpdateTicket(TicketID, ClientID, tbDetail.Text, tbType.Text, tbStatus.Text, ReportDate, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("Ticket Info Updated!", "Edit Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -50,7 +53,7 @@ namespace ReactCRM.Forms
             {
                 MessageBox.Show("Please fill in all the fields!", "Edit Ticket", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            tickets.connClose();
+            tickets.ConnClose();
         }
 
         private bool FormValidate()
@@ -66,6 +69,5 @@ namespace ReactCRM.Forms
             }
             return true;
         }
-
     }
 }

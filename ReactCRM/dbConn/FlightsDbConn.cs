@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ReactCRM.dbConn
 {
-    class FlightsDbConn : dbSQL
+    class FlightsDbConn : DbSQL
     {
         //Insert flight function.
         public void insertFlight(string F_Aircraft, string F_Depar_DateTime, string F_Arrival_DateTime, string F_Departure_City, string F_Arrival_City, string F_Duration, string F_AdultPrice, string F_ChildPrice, string F_InfantPrice)
@@ -26,7 +26,7 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@F_ChildPrice", F_ChildPrice);
             comm.Parameters.AddWithValue("@F_InfantPrice", F_InfantPrice);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
         //Another version of insert flight function with a complete flight entry as input.
@@ -36,7 +36,7 @@ namespace ReactCRM.dbConn
             comm.CommandText = $"INSERT INTO `tblflight`(`FlightID`, `F_Aircraft`, `F_Depar_DateTime`, `F_Arrival_DateTime`, `F_Departure_City`, `F_Arrival_City`, `F_Duration`, `F_AdultPrice`, `F_ChildPrice`, `F_InfantPrice`) VALUES {FlightEntry};";
             comm.Parameters.AddWithValue("@FlightEntry", FlightEntry);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
         //Update flight function.
@@ -56,7 +56,7 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@F_InfantPrice", F_InfantPrice);
             comm.Parameters.AddWithValue("@FlightID", FlightID);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
 
@@ -67,7 +67,7 @@ namespace ReactCRM.dbConn
             comm.CommandText = "DELETE FROM `tblflight` WHERE FlightID = @FlightID";
             comm.Parameters.AddWithValue("@FlightID", FlightID);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
         //Add a new aircraft model to the database.
@@ -78,7 +78,7 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@AircraftID", AircraftID);
             comm.Parameters.AddWithValue("@AircraftModel", AircraftModel);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
         //Add a new flight city to the database.
@@ -89,13 +89,13 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@AirportID", AirportID);
             comm.Parameters.AddWithValue("@AirportName", AirportName);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
         //Search for flight by specifying both city and date.
         public DataTable searchFlight(FlightsDbConn mysqlConn, string city, string date)
         {
-            DataTable output = mysqlConn.query($"SELECT * FROM `viewFlight` WHERE Departure_Time LIKE CONCAT('%', '{date}', '%') && (Departure_City LIKE CONCAT('%', '{city}', '%') || Arrival_City LIKE CONCAT('%', '{city}','%'))").Tables[0];
+            DataTable output = mysqlConn.Query($"SELECT * FROM `viewFlight` WHERE Departure_Time LIKE CONCAT('%', '{date}', '%') && (Departure_City LIKE CONCAT('%', '{city}', '%') || Arrival_City LIKE CONCAT('%', '{city}','%'))").Tables[0];
 
             return output;
         }
@@ -103,7 +103,7 @@ namespace ReactCRM.dbConn
         //Search for flight by specifying only date.
         public DataTable searchFlightByDate(FlightsDbConn mysqlConn, string date)
         {
-            DataTable output = mysqlConn.query($"SELECT * FROM `viewFlight` WHERE Departure_Time LIKE CONCAT('%', '{date}', '%') || Arrival_Time LIKE CONCAT('%', '{date}','%')").Tables[0];
+            DataTable output = mysqlConn.Query($"SELECT * FROM `viewFlight` WHERE Departure_Time LIKE CONCAT('%', '{date}', '%') || Arrival_Time LIKE CONCAT('%', '{date}','%')").Tables[0];
 
             return output;
         }
@@ -111,7 +111,7 @@ namespace ReactCRM.dbConn
         //Get all aircraft models from database.
         public DataTable GetAircraftModel(FlightsDbConn mysqlConn)
         {
-            DataTable output = mysqlConn.query("SELECT * FROM `tblaircraft`").Tables[0];
+            DataTable output = mysqlConn.Query("SELECT * FROM `tblaircraft`").Tables[0];
 
             return output;
         }
@@ -119,7 +119,7 @@ namespace ReactCRM.dbConn
         //Get all flight cities from database.
         public DataTable GetAirportName(FlightsDbConn mysqlConn)
         {
-            DataTable output = mysqlConn.query("SELECT * FROM `tblairport`").Tables[0];
+            DataTable output = mysqlConn.Query("SELECT * FROM `tblairport`").Tables[0];
 
             return output;
         }

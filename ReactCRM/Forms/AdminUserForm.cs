@@ -44,13 +44,13 @@ namespace ReactCRM.Forms
             //Get confirmation message before deleting an user.
             if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this user along with all the records?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                bookingDbConn.connect();
+                bookingDbConn.Connect();
 
-                if (bookingDbConn.connOpen() == true)
+                if (bookingDbConn.ConnOpen() == true)
                 {
-                    passengerDbConn.connect();
+                    passengerDbConn.Connect();
 
-                    if (passengerDbConn.connOpen() == true)
+                    if (passengerDbConn.ConnOpen() == true)
                     {
                         //Get all passengers that belong to the selected user.
                         DataTable passengerTable = passengerDbConn.getPassengerByUser(passengerDbConn, UserID);
@@ -65,15 +65,15 @@ namespace ReactCRM.Forms
                         //Delete each passenger's booking records.
                         foreach (string id in passengerList)
                         {
-                            bookingDbConn.connect();
+                            bookingDbConn.Connect();
 
-                            if (bookingDbConn.connOpen() == true)
+                            if (bookingDbConn.ConnOpen() == true)
                             {
                                 bookingDbConn.deleteBookingByPassenger(id);
                             }
                         }
 
-                        if (passengerDbConn.connOpen() == true)
+                        if (passengerDbConn.ConnOpen() == true)
                         {
                             //Delete all passengers that belong to the selected user.
                             passengerDbConn.deletePassengerByUser(UserID);

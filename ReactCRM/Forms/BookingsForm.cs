@@ -39,7 +39,7 @@ namespace ReactCRM
         {
             InitializeComponent();
             
-            bookingDbConn.connect();
+            bookingDbConn.Connect();
 
             //Get user ID of current user.
             userID = userDbConn.GetUserID();
@@ -48,12 +48,12 @@ namespace ReactCRM
             dgvSelectedFlight.DataSource = selectedFlight;
 
             //Display all available passengers created by current user. 
-            passengerDbConn.connect();
-            if (passengerDbConn.connOpen() == true)
+            passengerDbConn.Connect();
+            if (passengerDbConn.ConnOpen() == true)
             {
-                dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={userID}").Tables[0];
+                dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={userID}").Tables[0];
             }
-            passengerDbConn.connClose();
+            passengerDbConn.ConnClose();
         }
 
         //Open a new PassengerForm.
@@ -111,7 +111,7 @@ namespace ReactCRM
 
         private void btnBookFlight_Click(object sender, EventArgs e)
         {
-            if (bookingDbConn.connOpen() == true)
+            if (bookingDbConn.ConnOpen() == true)
             {
                 //Check if exactly the same booking already exists.
                 //Prevent users from booking the same flight for the same passenger. 
@@ -127,7 +127,7 @@ namespace ReactCRM
                     MessageBox.Show("The same passenger has already booked this flight!", "Booking Processed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            bookingDbConn.connClose();
+            bookingDbConn.ConnClose();
         }
 
         //Open a new booking history page.
@@ -143,11 +143,11 @@ namespace ReactCRM
         {
             if (!CheckOpened("PassengersForm"))
             {
-                if (passengerDbConn.connOpen() == true)
+                if (passengerDbConn.ConnOpen() == true)
                 {
-                    dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={userID}").Tables[0];
+                    dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={userID}").Tables[0];
                 }
-                passengerDbConn.connClose();
+                passengerDbConn.ConnClose();
             }
         }
 

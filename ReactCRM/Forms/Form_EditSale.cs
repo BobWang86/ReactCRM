@@ -30,10 +30,10 @@ namespace ReactCRM.Forms
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            sales.connect();
-            if (sales.connOpen() == true && FormValidate())
+            sales.Connect();
+            if (sales.ConnOpen() == true && FormValidate())
             {
-                sales.updateSale(SaleID, tbClient.Text, tbProduct.Text, tbPrice.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                sales.UpdateSale(SaleID, tbClient.Text, tbProduct.Text, tbPrice.Text, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("Sale Info Updated!", "Edit Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -41,7 +41,7 @@ namespace ReactCRM.Forms
             {
                 MessageBox.Show("Please fill in all the fields!", "Edit Sale", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            sales.connClose();
+            sales.ConnClose();
         }
 
         private bool FormValidate()

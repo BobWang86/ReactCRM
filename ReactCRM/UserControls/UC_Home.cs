@@ -42,9 +42,9 @@ namespace ReactCRM.UserControls
         {
             cartesianChart1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
 
-            List<double> Revenue = sales.getSalesByDate(sales);
+            List<double> Revenue = sales.GetSalesByDate(sales);
 
-            List<double> Expenditure = expenses.getExpensesByDate(expenses);
+            List<double> Expenditure = expenses.GetExpensesByDate(expenses);
 
             cartesianChart1.Series = new SeriesCollection
             {
@@ -175,9 +175,9 @@ namespace ReactCRM.UserControls
 
             List<double> Percentages = new List<double>();
 
-            double totalClients = clients.getTotalClients(clients);
+            double totalClients = clients.GetClientCount(clients);
 
-            List<double> salesPipeline = clients.getClientByPipeline(clients);
+            List<double> salesPipeline = clients.GetClientByPipeline(clients);
 
             foreach (var item in salesPipeline)
             {

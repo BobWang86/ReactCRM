@@ -136,6 +136,7 @@
             this.btnGen.TabIndex = 41;
             this.toolTip1.SetToolTip(this.btnGen, "Generate Expenses");
             this.btnGen.UseVisualStyleBackColor = true;
+            this.btnGen.Click += new System.EventHandler(this.btnGen_Click);
             // 
             // Form_AddExpense
             // 

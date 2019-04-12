@@ -24,12 +24,12 @@ namespace ReactCRM.UserControls
         {
             InitializeComponent();
 
-            tickets.connect();
-            if (tickets.connOpen() == true)
+            tickets.Connect();
+            if (tickets.ConnOpen() == true)
             {
-                dgvTickets.DataSource = tickets.query($"SELECT * FROM `tbTicket`").Tables[0];
+                dgvTickets.DataSource = tickets.SuperQuery($"SELECT * FROM `viewTicket`").Tables[0];
             }
-            tickets.connClose();
+            tickets.ConnClose();
 
             foreach (DataGridViewColumn column in dgvTickets.Columns)
             {
@@ -57,23 +57,23 @@ namespace ReactCRM.UserControls
         {
             if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this ticket?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                if (tickets.connOpen() == true)
+                if (tickets.ConnOpen() == true)
                 {
-                    tickets.deleteTicket(TicketID);
-                    dgvTickets.DataSource = tickets.query($"SELECT * FROM `tbTicket`").Tables[0];
+                    tickets.DeleteTicket(TicketID);
+                    dgvTickets.DataSource = tickets.SuperQuery($"SELECT * FROM `viewTicket`").Tables[0];
                 }
-                tickets.connClose();
+                tickets.ConnClose();
             }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            tickets.connect();
-            if (tickets.connOpen() == true)
+            tickets.Connect();
+            if (tickets.ConnOpen() == true)
             {
-                dgvTickets.DataSource = tickets.query($"SELECT * FROM `tbTicket`").Tables[0];
+                dgvTickets.DataSource = tickets.SuperQuery($"SELECT * FROM `viewTicket`").Tables[0];
             }
-            tickets.connClose();
+            tickets.ConnClose();
         }
 
         private void btnEmail_Click(object sender, EventArgs e)
@@ -83,7 +83,14 @@ namespace ReactCRM.UserControls
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            string keyword = tbSearch.Text;
 
+            tickets.Connect();
+            if (tickets.ConnOpen() == true)
+            {
+                dgvTickets.DataSource = tickets.SuperQuery($"SELECT * FROM `viewTicket` Where Name LIKE ''%{keyword}% || Detail LIKE '%{keyword}%' || Type LIKE '%{keyword}%'").Tables[0];
+            }
+            tickets.ConnClose();
         }
 
         private void dgvTickets_SelectionChanged(object sender, EventArgs e)

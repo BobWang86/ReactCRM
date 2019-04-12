@@ -135,6 +135,7 @@
             this.btnGen.TabIndex = 24;
             this.toolTipGen.SetToolTip(this.btnGen, "Generate Sales");
             this.btnGen.UseVisualStyleBackColor = true;
+            this.btnGen.Click += new System.EventHandler(this.btnGen_Click);
             // 
             // tbDate
             // 

@@ -9,9 +9,9 @@ using MySql.Data.MySqlClient;
 
 namespace ReactCRM.dbConn
 {
-    class dbTicket: dbSQL
+    class dbTicket: DbSQL
     {   
-        public void addTicket(string ClientID, string Detail, string Type, string Status, string ReportDate)
+        public void AddTicket(string ClientID, string Detail, string Type, string Status, string ReportDate)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "INSERT INTO `tbTicket` (`TicketID`, `ClientID`, `Detail`, `Type`, `Status`, `ReportDate`, `RespondDate`)" +
@@ -22,10 +22,10 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@Status", Status);
             comm.Parameters.AddWithValue("@ReportDate", ReportDate);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
-        public void updateTicket(string TicketID, string ClientID, string Detail, string Type, string Status, string ReportDate, string RespondDate)
+        public void UpdateTicket(string TicketID, string ClientID, string Detail, string Type, string Status, string ReportDate, string RespondDate)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "UPDATE `tbTicket` SET `ClientID`=@ClientID, `Detail`=@Detail, `Type`=@Type, `Status`=@Status, `ReportDate`=@ReportDate, `RespondDate`=@RespondDate WHERE `TicketID` = @TicketID";
@@ -37,16 +37,16 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@ReportDate", ReportDate);
             comm.Parameters.AddWithValue("@RespondDate", RespondDate);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
-        public void deleteTicket(string TicketID)
+        public void DeleteTicket(string TicketID)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "DELETE FROM `tbTicket` WHERE TicketID = @TicketID";
             comm.Parameters.AddWithValue("@TicketID", TicketID);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
     }
 }

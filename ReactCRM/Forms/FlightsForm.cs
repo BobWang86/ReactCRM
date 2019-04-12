@@ -42,17 +42,17 @@ namespace ReactCRM
         {
             flightDbConn = new FlightsDbConn();
 
-            flightDbConn.connect();
+            flightDbConn.Connect();
 
             //Display all flight information stored in the database.
-            if (flightDbConn.connOpen() == true)
+            if (flightDbConn.ConnOpen() == true)
             {
-                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
 
                 //Refresh the content of flightCities and flightModels Lists.
                 RefreshList();
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
 
         private void RefreshList()
@@ -92,34 +92,34 @@ namespace ReactCRM
         //Add flight and refresh flight list.
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (flightDbConn.connOpen() == true && ValidateForm())
+            if (flightDbConn.ConnOpen() == true && ValidateForm())
             {
                 flightDbConn.insertFlight(cbAirCraft.Text, dtpDeparDateTime.Text, dtpArrDateTime.Text, cbDepartureCity.Text, cbArrivalCity.Text, GetFlightDuration(), tbAdultPrice.Text, tbChildPrice.Text, tbInfantPrice.Text);
-                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
 
         //Update flight and refresh flight list.
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (flightDbConn.connOpen() == true && ValidateForm())
+            if (flightDbConn.ConnOpen() == true && ValidateForm())
             {
                 flightDbConn.updateFlight(tbFlightID.Text, cbAirCraft.Text, dtpDeparDateTime.Text, dtpArrDateTime.Text, cbDepartureCity.Text, cbArrivalCity.Text, GetFlightDuration(), tbAdultPrice.Text, tbChildPrice.Text, tbInfantPrice.Text);
-                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
 
         //Delete selected flight and refresh flight list.
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (flightDbConn.connOpen() == true)
+            if (flightDbConn.ConnOpen() == true)
             {
                 flightDbConn.deleteFlight(tbFlightID.Text);
-                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
 
         //Get flight information from the selected flight and pass them into corresponding fields.
@@ -195,13 +195,13 @@ namespace ReactCRM
         {
             string AircraftModel = tbNewModel.Text;
 
-            if (flightDbConn.connOpen() == true && AircraftModel.Length != 0)
+            if (flightDbConn.ConnOpen() == true && AircraftModel.Length != 0)
             {
                 flightDbConn.addNewModel(AircraftID, AircraftModel);
                 tbNewModel.Text = "";
                 RefreshList();
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
 
         //Add a new flight city to the database and refresh city list. 
@@ -209,13 +209,13 @@ namespace ReactCRM
         {
             string AirportName = tbNewCity.Text;
 
-            if (flightDbConn.connOpen() == true && tbNewCity.Text.Length != 0)
+            if (flightDbConn.ConnOpen() == true && tbNewCity.Text.Length != 0)
             {
                 flightDbConn.addNewCity(AirportID, AirportName);
                 tbNewCity.Text = "";
                 RefreshList();
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
 
         //Randomly generate a certain number of flights for a specified date.
@@ -270,21 +270,21 @@ namespace ReactCRM
             //Add randomly generated flights into database and refresh the flight table. 
             foreach (string entry in flightInfo)
             {
-                if (flightDbConn.connOpen() == true)
+                if (flightDbConn.ConnOpen() == true)
                 {
                     flightDbConn.generateFlight(entry);
                 }
-                flightDbConn.connClose();
+                flightDbConn.ConnClose();
             }
 
-            if (flightDbConn.connOpen() == true)
+            if (flightDbConn.ConnOpen() == true)
             {
-                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
 
                 MessageBox.Show($"Flights added to {dateGenerator}!", "Flights Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
     }
 }

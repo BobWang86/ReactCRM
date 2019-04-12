@@ -21,12 +21,12 @@ namespace ReactCRM.Forms
         {
             InitializeComponent();
 
-            clients.connect();
-            if (clients.connOpen() == true)
+            clients.Connect();
+            if (clients.ConnOpen() == true)
             {
-                dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
+                dgvClients.DataSource = clients.Query($"SELECT * FROM `tbClient`").Tables[0];
             }
-            clients.connClose();
+            clients.ConnClose();
 
             tbType.DropDownStyle = ComboBoxStyle.DropDownList;
             tbType.Items.AddRange(new string[] { "Order Status", "Bug Report", "Feature Request", "Technical Support" });
@@ -36,10 +36,10 @@ namespace ReactCRM.Forms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            tickets.connect();
-            if (tickets.connOpen() == true && FormValidate())
+            tickets.Connect();
+            if (tickets.ConnOpen() == true && FormValidate())
             {
-                tickets.addTicket(ClientID, tbDetail.Text, tbType.Text, tbStatus.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                tickets.AddTicket(ClientID, tbDetail.Text, tbType.Text, tbStatus.Text, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("New Ticket Added!", "Add Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -47,12 +47,19 @@ namespace ReactCRM.Forms
             {
                 MessageBox.Show("Please fill in all the fields!", "Add Ticket", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            tickets.connClose();
+            tickets.ConnClose();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            string keyword = tbSearch.Text;
 
+            clients.Connect();
+            if (clients.ConnOpen() == true)
+            {
+                dgvClients.DataSource = clients.SuperQuery($"SELECT * FROM `tbClient` Where Name LIKE '%{keyword}%' || Institute LIKE '%{keyword}%'").Tables[0];
+            }
+            clients.ConnClose();
         }
 
         private void dgvClients_SelectionChanged(object sender, EventArgs e)
@@ -61,6 +68,11 @@ namespace ReactCRM.Forms
             {
                 ClientID = dgvClients.SelectedRows[0].Cells[0].Value.ToString();
             }
+        }
+
+        private void btnGen_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("New Tickets Generated!", "Add Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private bool FormValidate()

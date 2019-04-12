@@ -27,12 +27,12 @@ namespace ReactCRM.UserControls
         {
             InitializeComponent();
 
-            clients.connect();
-            if (clients.connOpen() == true)
+            clients.Connect();
+            if (clients.ConnOpen() == true)
             {
-                dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
+                dgvClients.DataSource = clients.SuperQuery($"SELECT * FROM `viewClient`").Tables[0];
             }
-            clients.connClose();
+            clients.ConnClose();
 
             foreach (DataGridViewColumn column in dgvClients.Columns)
             {
@@ -64,23 +64,23 @@ namespace ReactCRM.UserControls
         {
             if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                if (clients.connOpen() == true)
+                if (clients.ConnOpen() == true)
                 {
-                    clients.deleteClient(ClientID);
-                    dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
+                    clients.DeleteClient(ClientID);
+                    dgvClients.DataSource = clients.SuperQuery($"SELECT * FROM `viewClient`").Tables[0];
                 }
-                clients.connClose();
+                clients.ConnClose();
             }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            clients.connect();
-            if (clients.connOpen() == true)
+            clients.Connect();
+            if (clients.ConnOpen() == true)
             {
-                dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
+                dgvClients.DataSource = clients.SuperQuery($"SELECT * FROM `viewClient`").Tables[0];
             }
-            clients.connClose();
+            clients.ConnClose();
 
             LineChartReload();
 
@@ -94,7 +94,14 @@ namespace ReactCRM.UserControls
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            string keyword = tbSearch.Text;
 
+            clients.Connect();
+            if (clients.ConnOpen() == true)
+            {
+                dgvClients.DataSource = clients.SuperQuery($"SELECT * FROM `viewClient` Where Name LIKE '%{keyword}%' || Institute LIKE '%{keyword}%' || Source LIKE '%{keyword}%' || Pipeline LIKE '%{keyword}%'").Tables[0];
+            }
+            clients.ConnClose();
         }
 
         private void dgvClients_SelectionChanged(object sender, EventArgs e)
@@ -118,7 +125,7 @@ namespace ReactCRM.UserControls
         {
             cartesianChart1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
 
-            List<int> Clients = clients.getClientByMonth(clients);
+            List<int> Clients = clients.GetClientByMonth(clients);
 
             cartesianChart1.Series = new SeriesCollection
             {
@@ -149,7 +156,7 @@ namespace ReactCRM.UserControls
 
         private void LineChartReload()
         {
-            List<int> Clients = clients.getClientByMonth(clients);
+            List<int> Clients = clients.GetClientByMonth(clients);
 
             cartesianChart1.Series = new SeriesCollection
             {
@@ -167,7 +174,7 @@ namespace ReactCRM.UserControls
 
             Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
-            List<int> Clients = clients.getClientBySource(clients);
+            List<int> Clients = clients.GetClientBySource(clients);
 
             pieChart1.Series = new SeriesCollection
             {

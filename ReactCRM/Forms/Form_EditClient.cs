@@ -29,8 +29,7 @@ namespace ReactCRM.Forms
             tbPhone.Text = selectedClient.Rows[0][3].ToString();
             tbInstitute.Text = selectedClient.Rows[0][4].ToString();
             tbSource.Text = selectedClient.Rows[0][5].ToString();
-            tbValue.Text = selectedClient.Rows[0][6].ToString();
-            tbPipeline.Text = selectedClient.Rows[0][7].ToString();
+            tbPipeline.Text = selectedClient.Rows[0][6].ToString();
             AddDate = selectedClient.Rows[0][8].ToString();
             tbDate.Text = selectedClient.Rows[0][9].ToString();
         }
@@ -45,10 +44,10 @@ namespace ReactCRM.Forms
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            clients.connect();
-            if (clients.connOpen() == true && FormValidate())
+            clients.Connect();
+            if (clients.ConnOpen() == true && FormValidate())
             {
-                clients.updateClient(ClientID, tbName.Text, tbEmail.Text, tbPhone.Text, tbInstitute.Text, tbSource.Text, tbValue.Text, tbPipeline.Text, AddDate, tbDate.Value.ToString("yyyy-MM-dd"));
+                clients.UpdateClient(ClientID, tbName.Text, tbEmail.Text, tbPhone.Text, tbInstitute.Text, tbSource.Text, tbPipeline.Text, AddDate, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("Client Info Updated!", "Edit Client", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -56,7 +55,7 @@ namespace ReactCRM.Forms
             {
                 MessageBox.Show("Please fill in all the fields!", "Edit Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            clients.connClose();
+            clients.ConnClose();
         }
 
         private bool FormValidate()
@@ -82,11 +81,6 @@ namespace ReactCRM.Forms
             }
 
             if (tbSource.Text.Length == 0)
-            {
-                return false;
-            }
-
-            if (tbValue.Text.Length == 0)
             {
                 return false;
             }

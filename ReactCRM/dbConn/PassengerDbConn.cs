@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace ReactCRM.dbConn
 {
-    class PassengerDbConn: dbSQL
+    class PassengerDbConn: DbSQL
     {
         //Insert passenger function.
         public void insertPassenger(string CusFName, string CusLName, string CusTelNum, string CusNation, string CusGender, string CusBirthDate, string UserID)
@@ -25,7 +25,7 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@CusBirthDate", CusBirthDate);
             comm.Parameters.AddWithValue("@UserID", UserID);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
         //Updata passenger function.
@@ -42,7 +42,7 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@CusBirthDate", CusBirthDate);
             comm.Parameters.AddWithValue("@UserID", UserID);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
         //Function to delete passenger by passenger ID.
@@ -52,7 +52,7 @@ namespace ReactCRM.dbConn
             comm.CommandText = "DELETE FROM `tblpassenger` WHERE CusID = @CusID";
             comm.Parameters.AddWithValue("@CusID", CusID);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
         //Function to delete passenger by user ID.
@@ -62,13 +62,13 @@ namespace ReactCRM.dbConn
             comm.CommandText = "DELETE FROM `tblpassenger` WHERE UserID = @UserID";
             comm.Parameters.AddWithValue("@UserID", UserID);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
         //Get all passengers that belong to one user account.
         public DataTable getPassengerByUser(PassengerDbConn mysqlConn, string UserID)
         {
-            DataTable output = mysqlConn.query($"SELECT CusID FROM `tblpassenger` WHERE `UserID`={UserID}").Tables[0];
+            DataTable output = mysqlConn.Query($"SELECT CusID FROM `tblpassenger` WHERE `UserID`={UserID}").Tables[0];
 
             return output;
         }

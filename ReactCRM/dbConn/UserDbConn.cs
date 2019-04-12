@@ -17,7 +17,7 @@ namespace ReactCRM.dbConn
         public MySqlDataAdapter sqlDA;
 
         //User sign in authentication using stored procedure.
-        public DataTable SignIn(string Email, string Password)
+        public DataTable SignIn(string email, string password)
         {
             sqlConn = new MySqlConnection(connString);
 
@@ -28,8 +28,8 @@ namespace ReactCRM.dbConn
                 MySqlDataAdapter sqlDA = new MySqlDataAdapter();
                 MySqlCommand sqlComm = new MySqlCommand("spSignIN", sqlConn);
                 sqlComm.CommandType = CommandType.StoredProcedure;
-                sqlComm.Parameters.AddWithValue("_UserEmail", Email);
-                sqlComm.Parameters.AddWithValue("_UserPwd", Password);
+                sqlComm.Parameters.AddWithValue("_UserEmail", email);
+                sqlComm.Parameters.AddWithValue("_UserPwd", password);
                 sqlDA.SelectCommand = sqlComm;
                 sqlDA.Fill(table);
 
@@ -39,7 +39,7 @@ namespace ReactCRM.dbConn
 
         //Create a new user account using stored procedure.
         //Insert emailaddress and password into database.
-        public void SignUp(int UserID, string UserEmail, string UserPwd)
+        public void SignUp(int userID, string userEmail, string userPwd)
         {
             sqlConn = new MySqlConnection(connString);
 
@@ -48,16 +48,16 @@ namespace ReactCRM.dbConn
                 sqlConn.Open();
                 MySqlCommand sqlComm = new MySqlCommand("spSignUp", sqlConn);
                 sqlComm.CommandType = CommandType.StoredProcedure;
-                sqlComm.Parameters.AddWithValue("_UserID", UserID);
-                sqlComm.Parameters.AddWithValue("_UserEmail", UserEmail);
-                sqlComm.Parameters.AddWithValue("_UserPwd", UserPwd);
+                sqlComm.Parameters.AddWithValue("_UserID", userID);
+                sqlComm.Parameters.AddWithValue("_UserEmail", userEmail);
+                sqlComm.Parameters.AddWithValue("_UserPwd", userPwd);
 
                 sqlComm.ExecuteNonQuery();
             }
         }
 
         //Update user's sign in status by changing the value from '0' to '1' under 'UserStatus' column.
-        public void SignInStatus(string Email, string Password)
+        public void SignInStatus(string email, string password)
         {
             sqlConn = new MySqlConnection(connString);
 
@@ -66,8 +66,8 @@ namespace ReactCRM.dbConn
                 sqlConn.Open();
                 MySqlCommand sqlComm = new MySqlCommand("spUpdateSignIn", sqlConn);
                 sqlComm.CommandType = CommandType.StoredProcedure;
-                sqlComm.Parameters.AddWithValue("_UserEmail", Email);
-                sqlComm.Parameters.AddWithValue("_UserPwd", Password);
+                sqlComm.Parameters.AddWithValue("_UserEmail", email);
+                sqlComm.Parameters.AddWithValue("_UserPwd", password);
 
                 sqlComm.ExecuteNonQuery();
             }
@@ -89,14 +89,14 @@ namespace ReactCRM.dbConn
         }
 
         //Delete an existing user using stored procedure.
-        public void DeleteUser(string UserID)
+        public void DeleteUser(string userID)
         {
             using (sqlConn)
             {
                 sqlConn.Open();
                 MySqlCommand sqlComm = new MySqlCommand("spDeleteUser", sqlConn);
                 sqlComm.CommandType = CommandType.StoredProcedure;
-                sqlComm.Parameters.AddWithValue("_UserID", UserID);
+                sqlComm.Parameters.AddWithValue("_UserID", userID);
 
                 sqlComm.ExecuteNonQuery();
             }

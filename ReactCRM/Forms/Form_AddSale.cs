@@ -23,12 +23,12 @@ namespace ReactCRM.Forms
         {
             InitializeComponent();
 
-            clients.connect();
-            if (clients.connOpen() == true)
+            clients.Connect();
+            if (clients.ConnOpen() == true)
             {
-                dgvClients.DataSource = clients.query($"SELECT * FROM `tbClient`").Tables[0];
+                dgvClients.DataSource = clients.Query($"SELECT * FROM `tbClient`").Tables[0];
             }
-            clients.connClose();
+            clients.ConnClose();
 
             tbProduct.DropDownStyle = ComboBoxStyle.DropDownList;
             tbProduct.Items.AddRange(new string[] { "Interactive Timetabling", "Automated Timetabling", "Attendance Monitoring", "Room Booking", "Pay Claim", "Integration", "Consultancy", "Training" });
@@ -36,10 +36,10 @@ namespace ReactCRM.Forms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            sales.connect();
-            if (sales.connOpen() == true && FormValidate())
+            sales.Connect();
+            if (sales.ConnOpen() == true && FormValidate())
             {
-                sales.addSale(ClientID, tbProduct.Text, tbPrice.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                sales.AddSale(ClientID, tbProduct.Text, tbPrice.Text, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("New Sale Added!", "Add Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -47,12 +47,19 @@ namespace ReactCRM.Forms
             {
                 MessageBox.Show("Please fill in all the fields!", "Add Sale", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            sales.connClose();
+            sales.ConnClose();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            string keyword = tbSearch.Text;
 
+            clients.Connect();
+            if (clients.ConnOpen() == true)
+            {
+                dgvClients.DataSource = clients.SuperQuery($"SELECT * FROM `tbClient` Where Name LIKE '%{keyword}%' || Institute LIKE '%{keyword}%'").Tables[0];
+            }
+            clients.ConnClose();
         }
 
         private void dgvClients_SelectionChanged(object sender, EventArgs e)
@@ -61,6 +68,11 @@ namespace ReactCRM.Forms
             {
                 ClientID = dgvClients.SelectedRows[0].Cells[0].Value.ToString();
             }
+        }
+
+        private void btnGen_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("New Sales Generated!", "Add Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private bool FormValidate()

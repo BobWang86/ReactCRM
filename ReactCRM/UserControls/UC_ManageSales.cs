@@ -26,12 +26,12 @@ namespace ReactCRM.UserControls
         {
             InitializeComponent();
 
-            sales.connect();
-            if (sales.connOpen() == true)
+            sales.Connect();
+            if (sales.ConnOpen() == true)
             {
-                dgvSales.DataSource = sales.query($"SELECT * FROM `tbSale`").Tables[0];
+                dgvSales.DataSource = sales.Query($"SELECT * FROM `tbSale`").Tables[0];
             }
-            sales.connClose();
+            sales.ConnClose();
 
             foreach (DataGridViewColumn column in dgvSales.Columns)
             {
@@ -63,23 +63,23 @@ namespace ReactCRM.UserControls
         {
             if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this entry?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                if (sales.connOpen() == true)
+                if (sales.ConnOpen() == true)
                 {
-                    sales.deleteSale(SaleID);
-                    dgvSales.DataSource = sales.query($"SELECT * FROM `tbClient`").Tables[0];
+                    sales.DeleteSale(SaleID);
+                    dgvSales.DataSource = sales.Query($"SELECT * FROM `tbClient`").Tables[0];
                 }
-                sales.connClose();
+                sales.ConnClose();
             }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            sales.connect();
-            if (sales.connOpen() == true)
+            sales.Connect();
+            if (sales.ConnOpen() == true)
             {
-                dgvSales.DataSource = sales.query($"SELECT * FROM `tbSale`").Tables[0];
+                dgvSales.DataSource = sales.Query($"SELECT * FROM `tbSale`").Tables[0];
             }
-            sales.connClose();
+            sales.ConnClose();
 
             LineChartReload();
 
@@ -88,7 +88,14 @@ namespace ReactCRM.UserControls
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            string keyword = tbSearch.Text;
 
+            sales.Connect();
+            if (sales.ConnOpen() == true)
+            {
+                dgvSales.DataSource = sales.SuperQuery($"SELECT * FROM `tbSale` Where Product LIKE '%{keyword}%'").Tables[0];
+            }
+            sales.ConnClose();
         }
 
         private void dgvSales_SelectionChanged(object sender, EventArgs e)
@@ -112,20 +119,20 @@ namespace ReactCRM.UserControls
         {
             cartesianChart1.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
 
-            List<double> productA = sales.getSales(sales, "Interactive Timetabling");
-            List<double> productB = sales.getSales(sales, "Automated Timetabling");
-            List<double> productC = sales.getSales(sales, "Attendance Monitoring");
-            List<double> productD = sales.getSales(sales, "Room Booking");
-            List<double> productE = sales.getSales(sales, "Pay Claim");
+            List<double> productA = sales.GetSales(sales, "Interactive Timetabling");
+            List<double> productB = sales.GetSales(sales, "Automated Timetabling");
+            List<double> productC = sales.GetSales(sales, "Attendance Monitoring");
+            List<double> productD = sales.GetSales(sales, "Room Booking");
+            List<double> productE = sales.GetSales(sales, "Pay Claim");
             List<double> Products = new List<double>();
             for (int i = 0; i < 6; i++)
             {
                 Products.Add(productA[i] + productB[i] + productC[i] + productD[i] + productE[i]);
             }
 
-            List<double> serviceA = sales.getSales(sales, "Integration");
-            List<double> serviceB = sales.getSales(sales, "Consultancy");
-            List<double> serviceC = sales.getSales(sales, "Training");
+            List<double> serviceA = sales.GetSales(sales, "Integration");
+            List<double> serviceB = sales.GetSales(sales, "Consultancy");
+            List<double> serviceC = sales.GetSales(sales, "Training");
             List<double> Services = new List<double>();
             for (int i = 0; i < 6; i++)
             {
@@ -168,20 +175,20 @@ namespace ReactCRM.UserControls
 
         private void LineChartReload()
         {
-            List<double> productA = sales.getSales(sales, "Interactive Timetabling");
-            List<double> productB = sales.getSales(sales, "Automated Timetabling");
-            List<double> productC = sales.getSales(sales, "Attendance Monitoring");
-            List<double> productD = sales.getSales(sales, "Room Booking");
-            List<double> productE = sales.getSales(sales, "Pay Claim");
+            List<double> productA = sales.GetSales(sales, "Interactive Timetabling");
+            List<double> productB = sales.GetSales(sales, "Automated Timetabling");
+            List<double> productC = sales.GetSales(sales, "Attendance Monitoring");
+            List<double> productD = sales.GetSales(sales, "Room Booking");
+            List<double> productE = sales.GetSales(sales, "Pay Claim");
             List<double> Products = new List<double>();
             for (int i = 0; i < 6; i++)
             {
                 Products.Add(productA[i] + productB[i] + productC[i] + productD[i] + productE[i]);
             }
 
-            List<double> serviceA = sales.getSales(sales, "Integration");
-            List<double> serviceB = sales.getSales(sales, "Consultancy");
-            List<double> serviceC = sales.getSales(sales, "Training");
+            List<double> serviceA = sales.GetSales(sales, "Integration");
+            List<double> serviceB = sales.GetSales(sales, "Consultancy");
+            List<double> serviceC = sales.GetSales(sales, "Training");
             List<double> Services = new List<double>();
             for (int i = 0; i < 6; i++)
             {
@@ -210,7 +217,7 @@ namespace ReactCRM.UserControls
             Func<ChartPoint, string> labelPoint = chartPoint =>
                 string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
-            List<double> Sales = sales.getSalesByType(sales);
+            List<double> Sales = sales.GetSalesByType(sales);
 
             pieChart1.Series = new SeriesCollection
             {

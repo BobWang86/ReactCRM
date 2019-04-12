@@ -48,7 +48,7 @@
             // 
             // tbDetail
             // 
-            this.tbDetail.Location = new System.Drawing.Point(121, 138);
+            this.tbDetail.Location = new System.Drawing.Point(121, 140);
             this.tbDetail.Name = "tbDetail";
             this.tbDetail.Size = new System.Drawing.Size(300, 60);
             this.tbDetail.TabIndex = 37;
@@ -58,7 +58,7 @@
             // 
             this.tbDate.CustomFormat = "yyyy/MM/dd";
             this.tbDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.tbDate.Location = new System.Drawing.Point(121, 319);
+            this.tbDate.Location = new System.Drawing.Point(121, 316);
             this.tbDate.Name = "tbDate";
             this.tbDate.Size = new System.Drawing.Size(300, 29);
             this.tbDate.TabIndex = 35;
@@ -68,7 +68,7 @@
             this.btnUpdate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(88)))), ((int)(((byte)(139)))));
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(88)))), ((int)(((byte)(139)))));
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Location = new System.Drawing.Point(157, 368);
+            this.btnUpdate.Location = new System.Drawing.Point(157, 375);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(150, 40);
             this.btnUpdate.TabIndex = 34;
@@ -79,7 +79,7 @@
             // tbType
             // 
             this.tbType.FormattingEnabled = true;
-            this.tbType.Location = new System.Drawing.Point(121, 219);
+            this.tbType.Location = new System.Drawing.Point(121, 216);
             this.tbType.Name = "tbType";
             this.tbType.Size = new System.Drawing.Size(300, 29);
             this.tbType.TabIndex = 32;
@@ -87,7 +87,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(59, 325);
+            this.label4.Location = new System.Drawing.Point(58, 320);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 21);
             this.label4.TabIndex = 26;
@@ -96,7 +96,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 272);
+            this.label3.Location = new System.Drawing.Point(47, 270);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 21);
             this.label3.TabIndex = 27;
@@ -105,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 222);
+            this.label2.Location = new System.Drawing.Point(57, 220);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 21);
             this.label2.TabIndex = 28;
@@ -114,7 +114,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(44, 141);
+            this.label5.Location = new System.Drawing.Point(43, 140);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 21);
             this.label5.TabIndex = 29;
@@ -123,7 +123,7 @@
             // tbStatus
             // 
             this.tbStatus.FormattingEnabled = true;
-            this.tbStatus.Location = new System.Drawing.Point(121, 269);
+            this.tbStatus.Location = new System.Drawing.Point(121, 266);
             this.tbStatus.Name = "tbStatus";
             this.tbStatus.Size = new System.Drawing.Size(300, 29);
             this.tbStatus.TabIndex = 33;
@@ -141,7 +141,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 102);
+            this.label1.Location = new System.Drawing.Point(50, 100);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 21);
             this.label1.TabIndex = 29;
@@ -150,7 +150,7 @@
             // tbClient
             // 
             this.tbClient.AutoSize = true;
-            this.tbClient.Location = new System.Drawing.Point(121, 102);
+            this.tbClient.Location = new System.Drawing.Point(120, 100);
             this.tbClient.Name = "tbClient";
             this.tbClient.Size = new System.Drawing.Size(26, 21);
             this.tbClient.TabIndex = 29;

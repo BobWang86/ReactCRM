@@ -32,10 +32,10 @@ namespace ReactCRM.Forms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            clients.connect();
-            if (clients.connOpen() == true && FormValidate())
+            clients.Connect();
+            if (clients.ConnOpen() == true && FormValidate())
             {
-                clients.addClient(tbName.Text, tbEmail.Text, tbPhone.Text, tbInstitute.Text, tbSource.Text, tbValue.Text, tbPipeline.Text, tbDate.Value.ToString("yyyy-MM-dd"), tbDate.Value.ToString("yyyy-MM-dd"));
+                clients.AddClient(tbName.Text, tbEmail.Text, tbPhone.Text, tbInstitute.Text, tbSource.Text, tbPipeline.Text, tbDate.Value.ToString("yyyy-MM-dd"), tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("New Client Added!", "Add Client", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -43,7 +43,7 @@ namespace ReactCRM.Forms
             {
                 MessageBox.Show("Please fill in all the fields!", "Add Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            clients.connClose();
+            clients.ConnClose();
         }
 
         private void btnGen_Click(object sender, EventArgs e)
@@ -74,11 +74,6 @@ namespace ReactCRM.Forms
             }
 
             if (tbSource.Text.Length == 0)
-            {
-                return false;
-            }
-
-            if (tbValue.Text.Length == 0)
             {
                 return false;
             }

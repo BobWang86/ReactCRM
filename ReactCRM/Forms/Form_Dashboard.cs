@@ -25,7 +25,7 @@ namespace ReactCRM.Forms
             this.Dispose();
         }
 
-        private void moveSidePanel(Control btn)
+        private void MoveSidePanel(Control btn)
         {
             panelSide.Top = btn.Top;
             panelSide.Height = btn.Height;
@@ -40,42 +40,42 @@ namespace ReactCRM.Forms
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnHome);
+            MoveSidePanel(btnHome);
             UC_Home ucHome = new UC_Home();
             AddControlsToPanel(ucHome);
         }
 
         private void btnClients_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnClients);
+            MoveSidePanel(btnClients);
             UC_ManageClients ucClient = new UC_ManageClients();
             AddControlsToPanel(ucClient);
         }
 
         private void btnSales_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnSales);
+            MoveSidePanel(btnSales);
             UC_ManageSales ucSale = new UC_ManageSales();
             AddControlsToPanel(ucSale);
         }
 
         private void btnTickets_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnTickets);
+            MoveSidePanel(btnTickets);
             UC_ManageTickets ucTicket = new UC_ManageTickets();
             AddControlsToPanel(ucTicket);
         }
 
         private void btnExpenses_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnExpenses);
+            MoveSidePanel(btnExpenses);
             UC_ManageExpenses ucExpense = new UC_ManageExpenses();
             AddControlsToPanel(ucExpense);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnSettings);
+            MoveSidePanel(btnSettings);
         }
     }
 }

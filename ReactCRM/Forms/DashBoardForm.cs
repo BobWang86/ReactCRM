@@ -33,14 +33,14 @@ namespace ReactCRM.Forms
             //Get current date.
             currentDate = DateTime.Now.Date.ToString("yyyy/MM/dd");
 
-            flightDbConn.connect();
+            flightDbConn.Connect();
 
             //Display today's flights by default.
-            if (flightDbConn.connOpen() == true)
+            if (flightDbConn.ConnOpen() == true)
             {
                 dgvFlight.DataSource = flightDbConn.searchFlightByDate(flightDbConn, currentDate);
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
 
             // Resize the DataGridView columns to fit the newly loaded data.
             dgvFlight.AutoResizeColumns();
@@ -71,21 +71,21 @@ namespace ReactCRM.Forms
         //Search flight by entering city name.
         private void btnSearchByCity_Click(object sender, EventArgs e)
         {
-            if (flightDbConn.connOpen() == true && tbSearchValue.Text.Length != 0)
+            if (flightDbConn.ConnOpen() == true && tbSearchValue.Text.Length != 0)
             {
                 dgvFlight.DataSource = flightDbConn.searchFlight(flightDbConn, tbSearchValue.Text, dtpSearchValue.Text);
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
 
         //Search flight by specifying flight date.
         private void dtpSearchValue_ValueChanged(object sender, EventArgs e)
         {
-            if (flightDbConn.connOpen() == true)
+            if (flightDbConn.ConnOpen() == true)
             {
                 dgvFlight.DataSource = flightDbConn.searchFlightByDate(flightDbConn, dtpSearchValue.Text);
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
 
         //Update selectedFlight DataTable whenever a new flight gets selected.
@@ -104,11 +104,11 @@ namespace ReactCRM.Forms
         //Display all flight information stored in the database.
         private void linklbDisplayAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (flightDbConn.connOpen() == true)
+            if (flightDbConn.ConnOpen() == true)
             {
-                dgvFlight.DataSource = flightDbConn.query("SELECT * FROM `viewFlight`").Tables[0];
+                dgvFlight.DataSource = flightDbConn.Query("SELECT * FROM `viewFlight`").Tables[0];
             }
-            flightDbConn.connClose();
+            flightDbConn.ConnClose();
         }
 
         //Open a new booking form and pass selectedFlight DataTable into it.

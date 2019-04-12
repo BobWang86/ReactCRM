@@ -28,12 +28,12 @@ namespace ReactCRM
             UserID = userDbConn.GetUserID();
 
             //Display all passengers that belong to current user's account.
-            passengerDbConn.connect();
-            if (passengerDbConn.connOpen() == true)
+            passengerDbConn.Connect();
+            if (passengerDbConn.ConnOpen() == true)
             {
-                dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
+                dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
             }
-            passengerDbConn.connClose();
+            passengerDbConn.ConnClose();
 
             BindData();
         }
@@ -64,23 +64,23 @@ namespace ReactCRM
         //Add new passenger and refresh passenger list.
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            if (passengerDbConn.connOpen() == true && ValidateForm())
+            if (passengerDbConn.ConnOpen() == true && ValidateForm())
             {
                 passengerDbConn.insertPassenger(tbFName.Text, tbLName.Text, tbTelNum.Text, tbNation.Text, cbGender.Text, dtpBirthDate.Text, UserID);
-                dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
+                dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
             }
-            passengerDbConn.connClose();
+            passengerDbConn.ConnClose();
         }
 
         //Update existing passenger and refresh passenger list.
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
-            if (passengerDbConn.connOpen() == true && ValidateForm())
+            if (passengerDbConn.ConnOpen() == true && ValidateForm())
             {
                 passengerDbConn.updatePassenger(PassengerID, tbFName.Text, tbLName.Text, tbTelNum.Text, tbNation.Text, cbGender.Text, dtpBirthDate.Text, UserID);
-                dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
+                dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
             }
-            passengerDbConn.connClose();
+            passengerDbConn.ConnClose();
         }
 
         //Delete selected passenger and refresh passenger list.
@@ -89,12 +89,12 @@ namespace ReactCRM
             //Get confirmation message before deleting a passenger.
             if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this passenger?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                if (passengerDbConn.connOpen() == true)
+                if (passengerDbConn.ConnOpen() == true)
                 {
                     passengerDbConn.deletePassenger(PassengerID);
-                    dgvPassenger.DataSource = passengerDbConn.query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
+                    dgvPassenger.DataSource = passengerDbConn.Query($"SELECT * FROM `viewPassenger` WHERE `UserID`={UserID}").Tables[0];
                 }
-                passengerDbConn.connClose();
+                passengerDbConn.ConnClose();
             }
         }
 

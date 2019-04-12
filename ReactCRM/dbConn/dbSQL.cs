@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace ReactCRM.dbConn
 {
-    class dbSQL
+    class DbSQL
     {
         ///// DB CONFIG START //////////////////////////////////////////////////////
         public string varConfigServer { get; set; }
@@ -26,13 +26,13 @@ namespace ReactCRM.dbConn
         ///// DB CONFIG END ////////////////////////////////////////////////////////
 
 
-        public void connect()
+        public void Connect()
         {//Connect to database (insecure, not using SSL or stored procedures)
             connString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
             conn = new MySqlConnection(connString);
         }
 
-        public bool connOpen()
+        public bool ConnOpen()
         {
             try { conn.Open(); return true; }
             catch (MySqlException err)
@@ -53,22 +53,22 @@ namespace ReactCRM.dbConn
             }
         }
 
-        public bool connClose()
+        public bool ConnClose()
         {//Connection close with error handling
             try { conn.Close(); return true; }
             catch (MySqlException err) { MessageBox.Show("Error: " + err.Message); return false; }
         }
 
-        public DataSet query(string sql)
+        public DataSet Query(string sql)
         {//Run sql query in argument and return dataset
             sqlDA = new MySqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();
             sqlDA.Fill(ds);
-            connClose();
+            ConnClose();
             return ds;
         }
 
-        public DataSet superQuery(string sql)
+        public DataSet SuperQuery(string sql)
         {//Run sql query in argument and return dataset
             sqlDA = new MySqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();

@@ -28,14 +28,14 @@ namespace ReactCRM.Forms
 
             userID = userDbConn.GetUserID();
 
-            bookingDbConn.connect();
+            bookingDbConn.Connect();
 
             //Display all booking records that belong to the current user.
-            if (bookingDbConn.connOpen() == true)
+            if (bookingDbConn.ConnOpen() == true)
             {
                 dgvBookingHistory.DataSource = bookingDbConn.DisplayUserBookingHistory(bookingDbConn, userID);
             }
-            bookingDbConn.connClose();
+            bookingDbConn.ConnClose();
         }
 
         //Get booking ID of the selected booking record.
@@ -53,12 +53,12 @@ namespace ReactCRM.Forms
             //Get confirmation message before deleting a booking record.
             if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this entry?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                if (bookingDbConn.connOpen() == true)
+                if (bookingDbConn.ConnOpen() == true)
                 {
                     bookingDbConn.deleteBooking(bookingID);
                     dgvBookingHistory.DataSource = bookingDbConn.DisplayUserBookingHistory(bookingDbConn, userID);
                 }
-                bookingDbConn.connClose();
+                bookingDbConn.ConnClose();
             }
         }
 

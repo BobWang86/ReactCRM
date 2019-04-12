@@ -27,12 +27,12 @@ namespace ReactCRM.UserControls
         {
             InitializeComponent();
 
-            expenses.connect();
-            if (expenses.connOpen() == true)
+            expenses.Connect();
+            if (expenses.ConnOpen() == true)
             {
-                dgvExpenses.DataSource = expenses.query($"SELECT * FROM `tbExpense`").Tables[0];
+                dgvExpenses.DataSource = expenses.Query($"SELECT * FROM `tbExpense`").Tables[0];
             }
-            expenses.connClose();
+            expenses.ConnClose();
 
             foreach (DataGridViewColumn column in dgvExpenses.Columns)
             {
@@ -64,23 +64,23 @@ namespace ReactCRM.UserControls
         {
             if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this entry?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                if (expenses.connOpen() == true)
+                if (expenses.ConnOpen() == true)
                 {
-                    expenses.deleteExpense(ExpenseID);
-                    dgvExpenses.DataSource = expenses.query($"SELECT * FROM `tbExpense`").Tables[0];
+                    expenses.DeleteExpense(ExpenseID);
+                    dgvExpenses.DataSource = expenses.Query($"SELECT * FROM `tbExpense`").Tables[0];
                 }
-                expenses.connClose();
+                expenses.ConnClose();
             }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            expenses.connect();
-            if (expenses.connOpen() == true)
+            expenses.Connect();
+            if (expenses.ConnOpen() == true)
             {
-                dgvExpenses.DataSource = expenses.query($"SELECT * FROM `tbExpense`").Tables[0];
+                dgvExpenses.DataSource = expenses.Query($"SELECT * FROM `tbExpense`").Tables[0];
             }
-            expenses.connClose();
+            expenses.ConnClose();
 
             LineChartReload();
 
@@ -113,7 +113,7 @@ namespace ReactCRM.UserControls
         {
             cartesianChart1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
 
-            List<double> Expenses = expenses.getExpensesByDate(expenses);
+            List<double> Expenses = expenses.GetExpensesByDate(expenses);
 
             cartesianChart1.Series = new SeriesCollection
             {
@@ -144,7 +144,7 @@ namespace ReactCRM.UserControls
 
         private void LineChartReload()
         {
-            List<double> Expenses = expenses.getExpensesByDate(expenses);
+            List<double> Expenses = expenses.GetExpensesByDate(expenses);
 
             cartesianChart1.Series = new SeriesCollection
             {
@@ -163,7 +163,7 @@ namespace ReactCRM.UserControls
             pieChart1.InnerRadius = 100;
             pieChart1.LegendLocation = LegendLocation.Right;
 
-            List<double> Expenses = expenses.getExpensesByType(expenses);
+            List<double> Expenses = expenses.GetExpensesByType(expenses);
 
             pieChart1.Series = new SeriesCollection
             {

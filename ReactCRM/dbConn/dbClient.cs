@@ -9,120 +9,118 @@ using MySql.Data.MySqlClient;
 
 namespace ReactCRM.dbConn
 {
-    class dbClient : dbSQL
+    class dbClient : DbSQL
     {
-        public void addClient(string Name, string Email, string Phone, string Institute, string Source, string Value, string Pipeline, string AddDate, string ContactDate)
+        public void AddClient(string Name, string Email, string Phone, string Institute, string Source, string Pipeline, string AddDate, string ContactDate)
         {
             MySqlCommand comm = conn.CreateCommand();
-            comm.CommandText = "INSERT INTO `tbClient` (`ClientID`, `Name`, `Email`, `Phone`, `Institute`, `Source`, `Value`, `Pipeline`, `AddDate`, `ContactDate`)" +
-                "VALUES (NULL,@Name, @Email, @Phone, @Institute, @Source, @Value, @Pipeline, @AddDate, @ContactDate);";
+            comm.CommandText = "INSERT INTO `tbClient` (`ClientID`, `Name`, `Email`, `Phone`, `Institute`, `Source`, `Pipeline`, `AddDate`, `ContactDate`)" +
+                "VALUES (NULL,@Name, @Email, @Phone, @Institute, @Source, @Pipeline, @AddDate, @ContactDate);";
             comm.Parameters.AddWithValue("@Name", Name);
             comm.Parameters.AddWithValue("@Email", Email);
             comm.Parameters.AddWithValue("@Phone", Phone);
             comm.Parameters.AddWithValue("@Institute", Institute);
             comm.Parameters.AddWithValue("@Source", Source);
-            comm.Parameters.AddWithValue("@Value", Value);
             comm.Parameters.AddWithValue("@Pipeline", Pipeline);
             comm.Parameters.AddWithValue("@AddDate", AddDate);
             comm.Parameters.AddWithValue("@ContactDate", ContactDate);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
-        public void updateClient(string ClientID, string Name, string Email, string Phone, string Institute, string Source, string Value, string Pipeline, string AddDate, string ContactDate)
+        public void UpdateClient(string ClientID, string Name, string Email, string Phone, string Institute, string Source, string Pipeline, string AddDate, string ContactDate)
         {
             MySqlCommand comm = conn.CreateCommand();
-            comm.CommandText = "UPDATE `tbClient` SET `Name`=@Name,`Email`=@Email,`Phone`=@Phone, `Institute`=@Institute, `Source`=@Source, `Value`=@Value, `Pipeline`=@Pipeline, `AddDate`=@AddDate, `ContactDate`=@ContactDate WHERE ClientID = @ClientID";
+            comm.CommandText = "UPDATE `tbClient` SET `Name`=@Name,`Email`=@Email,`Phone`=@Phone, `Institute`=@Institute, `Source`=@Source, `Pipeline`=@Pipeline, `AddDate`=@AddDate, `ContactDate`=@ContactDate WHERE ClientID = @ClientID";
             comm.Parameters.AddWithValue("@ClientID", ClientID);
             comm.Parameters.AddWithValue("@Name", Name);
             comm.Parameters.AddWithValue("@Email", Email);
             comm.Parameters.AddWithValue("@Phone", Phone);
             comm.Parameters.AddWithValue("@Institute", Institute);
             comm.Parameters.AddWithValue("@Source", Source);
-            comm.Parameters.AddWithValue("@Value", Value);
             comm.Parameters.AddWithValue("@Pipeline", Pipeline);
             comm.Parameters.AddWithValue("@AddDate", AddDate);
             comm.Parameters.AddWithValue("@ContactDate", ContactDate);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
-        public void deleteClient(string ClientID)
+        public void DeleteClient(string ClientID)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "DELETE FROM `tbClient` WHERE ClientID = @ClientID";
             comm.Parameters.AddWithValue("@ClientID", ClientID);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
-        public List<int> getClientByMonth(dbClient Clients)
+        public List<int> GetClientByMonth(dbClient Clients)
         {
             List<int> Count = new List<int>();
 
-            Clients.connect();
-            if (Clients.connOpen() == true)
+            Clients.Connect();
+            if (Clients.ConnOpen() == true)
             {
                 for (int i = 1; i <= 6; i++)
                 {
-                    int count = Clients.superQuery($"SELECT * FROM `tbClient` WHERE `AddDate` Like '%2019-0{i}%'").Tables[0].Rows.Count;
+                    int count = Clients.SuperQuery($"SELECT * FROM `tbClient` WHERE `AddDate` Like '%2019-0{i}%'").Tables[0].Rows.Count;
 
                     Count.Add(count);
                 }
             }
-            Clients.connClose();
+            Clients.ConnClose();
 
             return Count;
         }
 
-        public List<int> getClientBySource(dbClient Clients)
+        public List<int> GetClientBySource(dbClient Clients)
         {
             List<int> Count = new List<int>();
 
             List<string> Sources = new List<string> { "Call", "Email", "Referal", "Partner", "Campaign", "WebForm", "SocialMedia" };
 
-            Clients.connect();
-            if (Clients.connOpen() == true)
+            Clients.Connect();
+            if (Clients.ConnOpen() == true)
             {
                 foreach (var item in Sources)
                 {
-                    Count.Add(Clients.superQuery($"SELECT * FROM `tbClient` WHERE `Source` = '{item}'").Tables[0].Rows.Count);
+                    Count.Add(Clients.SuperQuery($"SELECT * FROM `tbClient` WHERE `Source` = '{item}'").Tables[0].Rows.Count);
                 }
             }
-            Clients.connClose();
+            Clients.ConnClose();
 
             return Count;
         }
 
-        public List<double> getClientByPipeline(dbClient Clients)
+        public List<double> GetClientByPipeline(dbClient Clients)
         {
             List<double> Count = new List<double>();
 
             List<string> Pipeline = new List<string> { "Awareness", "Interest", "Decision", "Action" };
 
-            Clients.connect();
-            if (Clients.connOpen() == true)
+            Clients.Connect();
+            if (Clients.ConnOpen() == true)
             {
                 foreach (var item in Pipeline)
                 {
-                    Count.Add(Clients.superQuery($"SELECT * FROM `tbClient` WHERE `Pipeline` = '{item}'").Tables[0].Rows.Count);
+                    Count.Add(Clients.SuperQuery($"SELECT * FROM `tbClient` WHERE `Pipeline` = '{item}'").Tables[0].Rows.Count);
                 }
             }
-            Clients.connClose();
+            Clients.ConnClose();
 
             return Count;
         }
 
-        public double getTotalClients(dbClient Clients)
+        public double GetClientCount(dbClient Clients)
         {
             double count = 0;
 
-            Clients.connect();
-            if (Clients.connOpen() == true)
+            Clients.Connect();
+            if (Clients.ConnOpen() == true)
             {
-                count = Clients.superQuery($"SELECT `ClientID` FROM `tbClient`").Tables[0].Rows.Count;
+                count = Clients.SuperQuery($"SELECT `ClientID` FROM `tbClient`").Tables[0].Rows.Count;
             }
-            Clients.connClose();
+            Clients.ConnClose();
 
             return count;
         }

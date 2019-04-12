@@ -181,6 +181,18 @@
     <Compile Include="Forms\Form_EditTicket.Designer.cs">
       <DependentUpon>Form_EditTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form_EmailProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_EmailProduct.Designer.cs">
+      <DependentUpon>Form_EmailProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_EmailTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_EmailTicket.Designer.cs">
+      <DependentUpon>Form_EmailTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PassengersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +302,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_EditTicket.resx">
       <DependentUpon>Form_EditTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_EmailProduct.resx">
+      <DependentUpon>Form_EmailProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_EmailTicket.resx">
+      <DependentUpon>Form_EmailTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PassengersForm.resx">
       <DependentUpon>PassengersForm.cs</DependentUpon>

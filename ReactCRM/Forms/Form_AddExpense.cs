@@ -27,10 +27,10 @@ namespace ReactCRM.Forms
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            expenses.connect();
-            if (expenses.connOpen() == true && FormValidate())
+            expenses.Connect();
+            if (expenses.ConnOpen() == true && FormValidate())
             {
-                expenses.addExpense(ExpenseID, tbType.Text, tbAmount.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                expenses.AddExpense(ExpenseID, tbType.Text, tbAmount.Text, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("New Expense Added!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -38,7 +38,12 @@ namespace ReactCRM.Forms
             {
                 MessageBox.Show("Please fill in all the fields!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            expenses.connClose();
+            expenses.ConnClose();
+        }
+
+        private void btnGen_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("New Expenses Generated!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private bool FormValidate()

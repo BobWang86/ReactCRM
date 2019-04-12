@@ -9,9 +9,9 @@ using MySql.Data.MySqlClient;
 
 namespace ReactCRM.dbConn
 {
-    class dbSale : dbSQL
+    class dbSale : DbSQL
     {   
-        public void addSale(string Client, string Product, string Price, string Date)
+        public void AddSale(string Client, string Product, string Price, string Date)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "INSERT INTO `tbSale` (`SaleID`, `Client`, `Product`, `Price`, `Date`)" +
@@ -21,10 +21,10 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@Price", Price);
             comm.Parameters.AddWithValue("@Date", Date);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
-        public void updateSale(string SaleID, string Client, string Product, string Price, string Date)
+        public void UpdateSale(string SaleID, string Client, string Product, string Price, string Date)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "UPDATE `tbSale` SET `Client`=@Client,`Product`=@Product,`Price`=@Price, `Date`=@Date WHERE SaleID = @SaleID";
@@ -34,28 +34,28 @@ namespace ReactCRM.dbConn
             comm.Parameters.AddWithValue("@Price", Price);
             comm.Parameters.AddWithValue("@Date", Date);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
-        public void deleteSale(string SaleID)
+        public void DeleteSale(string SaleID)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "DELETE FROM `tbSale` WHERE SaleID = @SaleID";
             comm.Parameters.AddWithValue("@SaleID", SaleID);
             comm.ExecuteNonQuery();
-            connClose();
+            ConnClose();
         }
 
-        public List<double> getSales(dbSale Sales, string Type)
+        public List<double> GetSales(dbSale Sales, string Type)
         {
             List<double> List = new List<double>();
 
-            Sales.connect();
-            if (Sales.connOpen() == true)
+            Sales.Connect();
+            if (Sales.ConnOpen() == true)
             {
                 for (int i = 1; i <= 6; i++)
                 {
-                    DataTable table = Sales.superQuery($"SELECT SUM(Price) FROM `tbSale` WHERE `Product` = '{Type}' && `Date` Like '%2019-0{i}%'").Tables[0];
+                    DataTable table = Sales.SuperQuery($"SELECT SUM(Price) FROM `tbSale` WHERE `Product` = '{Type}' && `Date` Like '%2019-0{i}%'").Tables[0];
                     if (string.IsNullOrEmpty(table.Rows[0][0].ToString()))
                     {
                         List.Add(0);
@@ -66,21 +66,21 @@ namespace ReactCRM.dbConn
                     }
                 }
             }
-            Sales.connClose();
+            Sales.ConnClose();
 
             return List;
         }
 
-        public List<double> getSalesByDate(dbSale Sales)
+        public List<double> GetSalesByDate(dbSale Sales)
         {
             List<double> List = new List<double>();
 
-            Sales.connect();
-            if (Sales.connOpen() == true)
+            Sales.Connect();
+            if (Sales.ConnOpen() == true)
             {
                 for (int i = 1; i <= 6; i++)
                 {
-                    DataTable table = Sales.superQuery($"SELECT SUM(Price) FROM `tbSale` WHERE `Date` Like '%2019-0{i}%'").Tables[0];
+                    DataTable table = Sales.SuperQuery($"SELECT SUM(Price) FROM `tbSale` WHERE `Date` Like '%2019-0{i}%'").Tables[0];
                     if (string.IsNullOrEmpty(table.Rows[0][0].ToString()))
                     {
                         List.Add(0);
@@ -91,23 +91,23 @@ namespace ReactCRM.dbConn
                     }
                 }
             }
-            Sales.connClose();
+            Sales.ConnClose();
 
             return List;
         }
 
-        public List<double> getSalesByType(dbSale Sales)
+        public List<double> GetSalesByType(dbSale Sales)
         {
             List<double> List = new List<double>();
 
             List<string> Types = new List<string> { "Interactive Timetabling", "Automated Timetabling", "Attendance Monitoring", "Room Booking", "Pay Claim", "Integration", "Consultancy", "Training" };
 
-            Sales.connect();
-            if (Sales.connOpen() == true)
+            Sales.Connect();
+            if (Sales.ConnOpen() == true)
             {
                 foreach (var item in Types)
                 {
-                    DataTable table = Sales.superQuery($"SELECT SUM(Price) FROM `tbSale` WHERE `Product` = '{item}'").Tables[0];
+                    DataTable table = Sales.SuperQuery($"SELECT SUM(Price) FROM `tbSale` WHERE `Product` = '{item}'").Tables[0];
 
                     if (string.IsNullOrEmpty(table.Rows[0][0].ToString()))
                     {
@@ -119,7 +119,7 @@ namespace ReactCRM.dbConn
                     }
                 }
             }
-            Sales.connClose();
+            Sales.ConnClose();
 
             return List;
         }
