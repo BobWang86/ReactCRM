@@ -111,9 +111,9 @@ namespace ReactCRM.dbConn
             return Count;
         }
 
-        public double GetClientCount(dbClient Clients)
+        public int GetClientCount(dbClient Clients)
         {
-            double count = 0;
+            int count = 0;
 
             Clients.Connect();
             if (Clients.ConnOpen() == true)

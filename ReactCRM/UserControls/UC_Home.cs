@@ -175,7 +175,7 @@ namespace ReactCRM.UserControls
 
             List<double> Percentages = new List<double>();
 
-            double totalClients = clients.GetClientCount(clients);
+            int totalClients = clients.GetClientCount(clients);
 
             List<double> salesPipeline = clients.GetClientByPipeline(clients);
 

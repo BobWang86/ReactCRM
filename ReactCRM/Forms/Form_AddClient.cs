@@ -1,4 +1,5 @@
 ﻿using ReactCRM.dbConn;
+using ReactCRM.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,6 +49,13 @@ namespace ReactCRM.Forms
 
         private void btnGen_Click(object sender, EventArgs e)
         {
+            //var random = new Bogus.Randomizer();
+            //var lorem = new Bogus.DataSets.Lorem("en");
+            //int OrderId = random.Number(1, 100);
+            //string Item = lorem.Sentence();
+            //Console.WriteLine(OrderId);
+            //Console.WriteLine(Item);
+
             MessageBox.Show("New Clients Generated!", "Add Client", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

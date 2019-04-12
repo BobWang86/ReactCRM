@@ -1,4 +1,5 @@
 ﻿using ReactCRM.dbConn;
+using ReactCRM.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,8 @@ namespace ReactCRM.Forms
     {
         dbClient clients = new dbClient();
         dbTicket tickets = new dbTicket();
-        string ClientID;
+        string clientID;
+        int clientCount;
 
         public Form_AddTicket()
         {
@@ -25,6 +27,7 @@ namespace ReactCRM.Forms
             if (clients.ConnOpen() == true)
             {
                 dgvClients.DataSource = clients.Query($"SELECT * FROM `tbClient`").Tables[0];
+                clientCount = clients.GetClientCount(clients);
             }
             clients.ConnClose();
 
@@ -39,7 +42,7 @@ namespace ReactCRM.Forms
             tickets.Connect();
             if (tickets.ConnOpen() == true && FormValidate())
             {
-                tickets.AddTicket(ClientID, tbDetail.Text, tbType.Text, tbStatus.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                tickets.AddTicket(clientID, tbDetail.Text, tbType.Text, tbStatus.Text, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("New Ticket Added!", "Add Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -66,13 +69,20 @@ namespace ReactCRM.Forms
         {
             if (dgvClients.SelectedRows.Count > 0)
             {
-                ClientID = dgvClients.SelectedRows[0].Cells[0].Value.ToString();
+                clientID = dgvClients.SelectedRows[0].Cells[0].Value.ToString();
             }
         }
 
         private void btnGen_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("New Tickets Generated!", "Add Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Ticket bogusTicket = new Ticket(clientCount);
+
+            foreach (var prop in bogusTicket.GetType().GetProperties())
+            {
+                Console.WriteLine("{0}={1}", prop.Name, prop.GetValue(bogusTicket, null));
+            }
+
+            //MessageBox.Show("New Tickets Generated!", "Add Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private bool FormValidate()
