@@ -31,7 +31,7 @@ namespace ReactCRM.dbConn
         public void UpdateClient(string ClientID, string Name, string Email, string Phone, string Institute, string Source, string Pipeline, string AddDate, string ContactDate)
         {
             MySqlCommand comm = conn.CreateCommand();
-            comm.CommandText = "UPDATE `tbClient` SET `Name`=@Name,`Email`=@Email,`Phone`=@Phone, `Institute`=@Institute, `Source`=@Source, `Pipeline`=@Pipeline, `AddDate`=@AddDate, `ContactDate`=@ContactDate WHERE ClientID = @ClientID";
+            comm.CommandText = "UPDATE `tbClient` SET `Name`=@Name,`Email`=@Email,`Phone`=@Phone, `Institute`=@Institute, `Source`=@Source, `Pipeline`=@Pipeline, `AddDate`=@AddDate, `ContactDate`=@ContactDate WHERE `ClientID` = @ClientID";
             comm.Parameters.AddWithValue("@ClientID", ClientID);
             comm.Parameters.AddWithValue("@Name", Name);
             comm.Parameters.AddWithValue("@Email", Email);
@@ -50,6 +50,16 @@ namespace ReactCRM.dbConn
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "DELETE FROM `tbClient` WHERE ClientID = @ClientID";
             comm.Parameters.AddWithValue("@ClientID", ClientID);
+            comm.ExecuteNonQuery();
+            ConnClose();
+        }
+
+        public void UpdateClientPipeline(string ClientID, string Pipeline)
+        {
+            MySqlCommand comm = conn.CreateCommand();
+            comm.CommandText = "UPDATE `tbClient` SET `Pipeline`=@Pipeline WHERE `ClientID` = @ClientID";
+            comm.Parameters.AddWithValue("@ClientID", ClientID);
+            comm.Parameters.AddWithValue("@Pipeline", Pipeline);
             comm.ExecuteNonQuery();
             ConnClose();
         }

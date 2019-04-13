@@ -33,7 +33,7 @@ namespace ReactCRM.Forms
             expenses.Connect();
             if (expenses.ConnOpen() == true && FormValidate())
             {
-                expenses.UpdateExpense(tbExpense.Text, tbType.Text, tbAmount.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                expenses.UpdateExpense(tbExpense.Text, tbType.Text, tbAmount.Value, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("Sale Info Updated!", "Edit Expense", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

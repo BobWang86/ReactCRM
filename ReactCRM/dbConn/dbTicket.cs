@@ -11,16 +11,17 @@ namespace ReactCRM.dbConn
 {
     class dbTicket: DbSQL
     {   
-        public void AddTicket(string ClientID, string Detail, string Type, string Status, string ReportDate)
+        public void AddTicket(string ClientID, string Detail, string Type, string Status, string ReportDate, string ResponsdDate)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "INSERT INTO `tbTicket` (`TicketID`, `ClientID`, `Detail`, `Type`, `Status`, `ReportDate`, `RespondDate`)" +
-                "VALUES (NULL,@ClientID, @Detail, @Type, @Status, @ReportDate, NULL);";
+                "VALUES (NULL,@ClientID, @Detail, @Type, @Status, @ReportDate, @ResponsdDate);";
             comm.Parameters.AddWithValue("@ClientID", ClientID);
             comm.Parameters.AddWithValue("@Detail", Detail);
             comm.Parameters.AddWithValue("@Type", Type);
             comm.Parameters.AddWithValue("@Status", Status);
             comm.Parameters.AddWithValue("@ReportDate", ReportDate);
+            comm.Parameters.AddWithValue("@ResponsdDate", ResponsdDate);
             comm.ExecuteNonQuery();
             ConnClose();
         }

@@ -1,4 +1,5 @@
-﻿using ReactCRM.UserControls;
+﻿using ReactCRM.dbConn;
+using ReactCRM.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +14,21 @@ namespace ReactCRM.Forms
 {
     public partial class Form_Dashboard : Form
     {
+        dbUser user = new dbUser();
+
         public Form_Dashboard()
         {
             InitializeComponent();
             UC_Home ucHome = new UC_Home();
             AddControlsToPanel(ucHome);
+            lbUserEmail.Text = user.GetUserEmail();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            user.SignOutStatus();
             this.Dispose();
+            Application.Restart();
         }
 
         private void MoveSidePanel(Control btn)
@@ -76,6 +82,12 @@ namespace ReactCRM.Forms
         private void btnSettings_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btnSettings);
+        }
+
+        private void Form_Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            user.SignOutStatus();
+            Application.Exit();
         }
     }
 }

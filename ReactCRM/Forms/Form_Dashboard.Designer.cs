@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dashboard));
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelSide = new System.Windows.Forms.Panel();
@@ -41,11 +42,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelTime = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.lbUserEmail = new System.Windows.Forms.Label();
             this.lbWelcome = new System.Windows.Forms.Label();
             this.panelControls = new System.Windows.Forms.Panel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panelLeft.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -214,7 +215,6 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
-            this.panel2.Controls.Add(this.labelTime);
             this.panel2.Controls.Add(this.btnExit);
             this.panel2.Controls.Add(this.lbUserEmail);
             this.panel2.Controls.Add(this.lbWelcome);
@@ -223,18 +223,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1065, 60);
             this.panel2.TabIndex = 0;
-            // 
-            // labelTime
-            // 
-            this.labelTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelTime.AutoSize = true;
-            this.labelTime.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTime.ForeColor = System.Drawing.Color.White;
-            this.labelTime.Location = new System.Drawing.Point(913, 18);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(90, 21);
-            this.labelTime.TabIndex = 0;
-            this.labelTime.Text = "HH:MM:SS";
             // 
             // btnExit
             // 
@@ -251,6 +239,7 @@
             this.btnExit.Size = new System.Drawing.Size(50, 60);
             this.btnExit.TabIndex = 2;
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip.SetToolTip(this.btnExit, "Sign Out");
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -298,6 +287,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_Dashboard";
             this.Text = "Dashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Dashboard_FormClosing);
             this.panelLeft.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -324,8 +314,8 @@
         private System.Windows.Forms.Button btnTickets;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lbUserEmail;
-        private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Panel panelControls;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

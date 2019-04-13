@@ -222,7 +222,7 @@
             this.panel6.ForeColor = System.Drawing.Color.Black;
             this.panel6.Location = new System.Drawing.Point(10, 60);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1045, 260);
+            this.panel6.Size = new System.Drawing.Size(1045, 255);
             this.panel6.TabIndex = 3;
             // 
             // dgvClients
@@ -239,13 +239,13 @@
             this.dgvClients.MultiSelect = false;
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClients.Size = new System.Drawing.Size(1045, 260);
+            this.dgvClients.Size = new System.Drawing.Size(1045, 255);
             this.dgvClients.TabIndex = 0;
             this.dgvClients.SelectionChanged += new System.EventHandler(this.dgvClients_SelectionChanged);
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(10, 320);
+            this.panel7.Location = new System.Drawing.Point(10, 315);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1045, 10);
             this.panel7.TabIndex = 4;
@@ -255,9 +255,9 @@
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.Controls.Add(this.cartesianChart1);
             this.panel8.ForeColor = System.Drawing.Color.Black;
-            this.panel8.Location = new System.Drawing.Point(10, 330);
+            this.panel8.Location = new System.Drawing.Point(9, 325);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(520, 320);
+            this.panel8.Size = new System.Drawing.Size(520, 325);
             this.panel8.TabIndex = 5;
             // 
             // cartesianChart1
@@ -265,7 +265,7 @@
             this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cartesianChart1.Location = new System.Drawing.Point(0, 0);
             this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(520, 320);
+            this.cartesianChart1.Size = new System.Drawing.Size(520, 325);
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
             // 
@@ -274,9 +274,9 @@
             this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.elementHost1);
             this.panel9.ForeColor = System.Drawing.Color.Black;
-            this.panel9.Location = new System.Drawing.Point(535, 330);
+            this.panel9.Location = new System.Drawing.Point(535, 326);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(520, 320);
+            this.panel9.Size = new System.Drawing.Size(520, 325);
             this.panel9.TabIndex = 5;
             // 
             // elementHost1
@@ -284,7 +284,7 @@
             this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.elementHost1.Location = new System.Drawing.Point(0, 0);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(520, 320);
+            this.elementHost1.Size = new System.Drawing.Size(520, 325);
             this.elementHost1.TabIndex = 0;
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = this.pieChart1;

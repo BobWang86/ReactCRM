@@ -1,6 +1,7 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
 using ReactCRM.dbConn;
+using ReactCRM.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace ReactCRM.Forms
         dbClient clients = new dbClient();
         dbSale sales = new dbSale();
         string ClientID;
+        int clientCount;
 
         public Form_AddSale()
         {
@@ -27,6 +29,7 @@ namespace ReactCRM.Forms
             if (clients.ConnOpen() == true)
             {
                 dgvClients.DataSource = clients.Query($"SELECT * FROM `tbClient`").Tables[0];
+                clientCount = clients.GetClientCount(clients);
             }
             clients.ConnClose();
 
@@ -39,7 +42,7 @@ namespace ReactCRM.Forms
             sales.Connect();
             if (sales.ConnOpen() == true && FormValidate())
             {
-                sales.AddSale(ClientID, tbProduct.Text, tbPrice.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                sales.AddSale(ClientID, tbProduct.Text, tbPrice.Value, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("New Sale Added!", "Add Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -72,7 +75,34 @@ namespace ReactCRM.Forms
 
         private void btnGen_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("New Sales Generated!", "Add Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Sale bogusSale = new Sale(clientCount);
+
+            sales.Connect();
+            if (sales.ConnOpen() == true)
+            {
+                sales.AddSale(bogusSale.ClientID, bogusSale.Product, bogusSale.Price, bogusSale.Date);
+
+                if (bogusSale.Product == "Integration" || bogusSale.Product == "Consultancy" || bogusSale.Product == "Training")
+                {
+                    clients.Connect();
+                    if (clients.ConnOpen() == true)
+                    {
+                        clients.UpdateClientPipeline(bogusSale.ClientID, "Decision");
+                    }
+                    clients.ConnClose();
+                }
+                else
+                {
+                    clients.Connect();
+                    if (clients.ConnOpen() == true)
+                    {
+                        clients.UpdateClientPipeline(bogusSale.ClientID, "Action");
+                    }
+                    clients.ConnClose();
+                }
+
+                MessageBox.Show("New Sales Generated!", "Add Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private bool FormValidate()

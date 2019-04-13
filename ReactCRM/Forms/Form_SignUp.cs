@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace ReactCRM.Forms
 {
-    public partial class SignUpForm : Form
+    public partial class Form_SignUp : Form
     {
-        UserDbConn userDbConn = new UserDbConn();
+        dbUser userDbConn = new dbUser();
         int UserID = 0;
 
-        public SignUpForm()
+        public Form_SignUp()
         {
             InitializeComponent();
         }

@@ -33,7 +33,7 @@ namespace ReactCRM.Forms
             sales.Connect();
             if (sales.ConnOpen() == true && FormValidate())
             {
-                sales.UpdateSale(SaleID, tbClient.Text, tbProduct.Text, tbPrice.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                sales.UpdateSale(SaleID, tbClient.Text, tbProduct.Text, tbPrice.Value, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("Sale Info Updated!", "Edit Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

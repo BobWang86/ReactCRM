@@ -42,7 +42,14 @@ namespace ReactCRM.Forms
             tickets.Connect();
             if (tickets.ConnOpen() == true && FormValidate())
             {
-                tickets.AddTicket(clientID, tbDetail.Text, tbType.Text, tbStatus.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                tickets.AddTicket(clientID, tbDetail.Text, tbType.Text, tbStatus.Text, tbDate.Value.ToString("yyyy-MM-dd"), tbDate.Value.ToString("yyyy-MM-dd"));
+
+                clients.Connect();
+                if (clients.ConnOpen() == true)
+                {
+                    clients.UpdateClientPipeline(clientID, "Interest");
+                }
+                clients.ConnClose();
 
                 MessageBox.Show("New Ticket Added!", "Add Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -77,12 +84,21 @@ namespace ReactCRM.Forms
         {
             Ticket bogusTicket = new Ticket(clientCount);
 
-            foreach (var prop in bogusTicket.GetType().GetProperties())
+            tickets.Connect();
+            if (tickets.ConnOpen() == true)
             {
-                Console.WriteLine("{0}={1}", prop.Name, prop.GetValue(bogusTicket, null));
+                tickets.AddTicket(bogusTicket.ClientID, bogusTicket.Detail, bogusTicket.TicType, bogusTicket.TicStatus, bogusTicket.ReportDate, bogusTicket.RespondDate);
             }
+            tickets.ConnClose();
 
-            //MessageBox.Show("New Tickets Generated!", "Add Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            clients.Connect();
+            if (clients.ConnOpen() == true)
+            {
+                clients.UpdateClientPipeline(bogusTicket.ClientID, "Interest");
+            }
+            clients.ConnClose();
+
+            MessageBox.Show("New Tickets Generated!", "Add Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private bool FormValidate()

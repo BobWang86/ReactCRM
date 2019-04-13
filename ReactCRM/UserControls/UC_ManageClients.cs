@@ -89,7 +89,10 @@ namespace ReactCRM.UserControls
 
         private void btnEmail_Click(object sender, EventArgs e)
         {
-
+            using (Form_EmailProduct form = new Form_EmailProduct(selectedClient))
+            {
+                form.ShowDialog();
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

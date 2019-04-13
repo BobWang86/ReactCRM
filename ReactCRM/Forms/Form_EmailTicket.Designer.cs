@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_EmailTicket));
             this.tbContent = new System.Windows.Forms.RichTextBox();
-            this.tbType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.Label();
             this.tbClient = new System.Windows.Forms.Label();
@@ -39,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.picLogp = new System.Windows.Forms.PictureBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.tbType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLogp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,14 +49,6 @@
             this.tbContent.Size = new System.Drawing.Size(300, 155);
             this.tbContent.TabIndex = 60;
             this.tbContent.Text = "";
-            // 
-            // tbType
-            // 
-            this.tbType.FormattingEnabled = true;
-            this.tbType.Location = new System.Drawing.Point(124, 160);
-            this.tbType.Name = "tbType";
-            this.tbType.Size = new System.Drawing.Size(300, 29);
-            this.tbType.TabIndex = 59;
             // 
             // label3
             // 
@@ -133,6 +125,16 @@
             this.btnSend.TabIndex = 51;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // tbType
+            // 
+            this.tbType.AutoSize = true;
+            this.tbType.Location = new System.Drawing.Point(120, 160);
+            this.tbType.Name = "tbType";
+            this.tbType.Size = new System.Drawing.Size(112, 21);
+            this.tbType.TabIndex = 54;
+            this.tbType.Text = "Email Address";
             // 
             // Form_EmailTicket
             // 
@@ -140,8 +142,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
             this.ClientSize = new System.Drawing.Size(464, 441);
             this.Controls.Add(this.tbContent);
-            this.Controls.Add(this.tbType);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.tbType);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbClient);
             this.Controls.Add(this.label2);
@@ -154,7 +156,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_EmailTicket";
-            this.Text = "Email Ticket";
+            this.Text = "Ticket Email ";
             ((System.ComponentModel.ISupportInitialize)(this.picLogp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -164,7 +166,6 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox tbContent;
-        private System.Windows.Forms.ComboBox tbType;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label tbEmail;
         private System.Windows.Forms.Label tbClient;
@@ -173,5 +174,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox picLogp;
         private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Label tbType;
     }
 }

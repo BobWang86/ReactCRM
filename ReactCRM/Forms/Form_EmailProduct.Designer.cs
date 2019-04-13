@@ -32,7 +32,7 @@
             this.picLogp = new System.Windows.Forms.PictureBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.tbContent = new System.Windows.Forms.RichTextBox();
-            this.tbType = new System.Windows.Forms.ComboBox();
+            this.tbProduct = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbClient = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@
             this.btnSend.TabIndex = 39;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // tbContent
             // 
@@ -72,22 +73,23 @@
             this.tbContent.TabIndex = 50;
             this.tbContent.Text = "";
             // 
-            // tbType
+            // tbProduct
             // 
-            this.tbType.FormattingEnabled = true;
-            this.tbType.Location = new System.Drawing.Point(124, 160);
-            this.tbType.Name = "tbType";
-            this.tbType.Size = new System.Drawing.Size(300, 29);
-            this.tbType.TabIndex = 47;
+            this.tbProduct.FormattingEnabled = true;
+            this.tbProduct.Location = new System.Drawing.Point(124, 160);
+            this.tbProduct.Name = "tbProduct";
+            this.tbProduct.Size = new System.Drawing.Size(300, 29);
+            this.tbProduct.TabIndex = 47;
+            this.tbProduct.SelectionChangeCommitted += new System.EventHandler(this.tbType_SelectionChangeCommitted);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 160);
+            this.label3.Location = new System.Drawing.Point(34, 160);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 21);
+            this.label3.Size = new System.Drawing.Size(72, 21);
             this.label3.TabIndex = 43;
-            this.label3.Text = "Type:";
+            this.label3.Text = "Product:";
             // 
             // tbClient
             // 
@@ -140,7 +142,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
             this.ClientSize = new System.Drawing.Size(464, 441);
             this.Controls.Add(this.tbContent);
-            this.Controls.Add(this.tbType);
+            this.Controls.Add(this.tbProduct);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbClient);
@@ -155,7 +157,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form_EmailProduct";
-            this.Text = "Email Product";
+            this.Text = "Product Email ";
             ((System.ComponentModel.ISupportInitialize)(this.picLogp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -167,7 +169,7 @@
         private System.Windows.Forms.PictureBox picLogp;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.RichTextBox tbContent;
-        private System.Windows.Forms.ComboBox tbType;
+        private System.Windows.Forms.ComboBox tbProduct;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label tbClient;
         private System.Windows.Forms.Label label1;

@@ -1,6 +1,6 @@
 ﻿namespace ReactCRM.Forms
 {
-    partial class SignUpForm
+    partial class Form_SignUp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUpForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_SignUp));
             this.signUpGroupBox = new System.Windows.Forms.GroupBox();
             this.tbPassword2 = new System.Windows.Forms.TextBox();
             this.lbPassword2 = new System.Windows.Forms.Label();

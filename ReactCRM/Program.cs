@@ -19,56 +19,34 @@ namespace ReactCRM
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //SignInForm signInForm = new SignInForm();
-            //SignUpForm signUpForm = new SignUpForm();
+            Form_SignIn signInForm = new Form_SignIn();
+            Form_SignUp signUpForm = new Form_SignUp();
 
-            //dbSQL SqlConnection = new dbSQL();
+            DbSQL SqlConnection = new DbSQL();
 
-            //SqlConnection.connect();
+            SqlConnection.Connect();
 
-            ////Verify database connection.
-            //if (SqlConnection.connOpen() == true)
-            //{
-            //    //User authentication.
-            //    if (signInForm.ShowDialog() == DialogResult.OK)
-            //    {
-            //        Application.Run(new Form_Dashboard());
-            //    }
-            //    else
-            //    {
-            //        Application.Exit();
-            //    }
-            //}
-            //else
-            //{
-            //    //Prevent the application from running offline.
-            //    MessageBox.Show("System is currently offline!", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //Verify database connection.
+            if (SqlConnection.ConnOpen() == true)
+            {
+                //User authentication.
+                if (signInForm.ShowDialog() == DialogResult.OK)
+                {
+                    Application.Run(new Form_Dashboard());
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                //Prevent the application from running offline.
+                MessageBox.Show("System is currently offline!", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            //    Application.Exit();
-            //}
-            //SqlConnection.connClose();
-
-
-
-            //dbSQL SqlConnection = new dbSQL();
-
-            //SqlConnection.connect();
-
-            ////Verify database connection.
-            //if (SqlConnection.connOpen() == true)
-            //{
-            //    Application.Run(new Form_Dashboard());
-            //}
-            //else
-            //{
-            //    //Prevent the application from running offline.
-            //    MessageBox.Show("System is currently offline!", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            //    Application.Exit();
-            //}
-            //SqlConnection.connClose();
-
-            Application.Run(new Form_Dashboard());
+                Application.Exit();
+            }
+            SqlConnection.ConnClose();
         }
     }
 }

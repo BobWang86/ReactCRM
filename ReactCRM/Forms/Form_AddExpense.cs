@@ -1,4 +1,5 @@
 ﻿using ReactCRM.dbConn;
+using ReactCRM.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,7 @@ namespace ReactCRM.Forms
             expenses.Connect();
             if (expenses.ConnOpen() == true && FormValidate())
             {
-                expenses.AddExpense(ExpenseID, tbType.Text, tbAmount.Text, tbDate.Value.ToString("yyyy-MM-dd"));
+                expenses.AddExpense(tbType.Text, tbAmount.Value, tbDate.Value.ToString("yyyy-MM-dd"));
 
                 MessageBox.Show("New Expense Added!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -43,7 +44,15 @@ namespace ReactCRM.Forms
 
         private void btnGen_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("New Expenses Generated!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Expense bogusExpense = new Expense();
+
+            expenses.Connect();
+            if (expenses.ConnOpen() == true)
+            {
+                expenses.AddExpense(bogusExpense.Type, bogusExpense.Amount, bogusExpense.Date);
+
+                MessageBox.Show("New Expenses Generated!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private bool FormValidate()

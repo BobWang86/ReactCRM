@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace ReactCRM.Forms
 {
-    public partial class SignInForm : Form
+    public partial class Form_SignIn : Form
     {
-        UserDbConn userDbConn = new UserDbConn();
+        dbUser userDbConn = new dbUser();
 
-        public SignInForm()
+        public Form_SignIn()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace ReactCRM.Forms
         //Open a new SignUp Form.
         private void linklbSignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new SignUpForm().Show();
+            new Form_SignUp().Show();
         }
 
         //User authentication by emailadress and password.

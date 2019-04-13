@@ -11,7 +11,7 @@ namespace ReactCRM.dbConn
 {
     class dbSale : DbSQL
     {   
-        public void AddSale(string Client, string Product, string Price, string Date)
+        public void AddSale(string Client, string Product, decimal Price, string Date)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "INSERT INTO `tbSale` (`SaleID`, `Client`, `Product`, `Price`, `Date`)" +
@@ -24,7 +24,7 @@ namespace ReactCRM.dbConn
             ConnClose();
         }
 
-        public void UpdateSale(string SaleID, string Client, string Product, string Price, string Date)
+        public void UpdateSale(string SaleID, string Client, string Product, decimal Price, string Date)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "UPDATE `tbSale` SET `Client`=@Client,`Product`=@Product,`Price`=@Price, `Date`=@Date WHERE SaleID = @SaleID";

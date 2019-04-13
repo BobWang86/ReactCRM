@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ReactCRM.dbConn
 {
-    public class UserDbConn
+    public class dbUser
     {
         private string connString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
         public MySqlConnection sqlConn;

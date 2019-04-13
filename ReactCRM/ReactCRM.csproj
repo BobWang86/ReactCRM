@@ -115,21 +115,7 @@
     <Compile Include="dbConn\dbExpense.cs" />
     <Compile Include="dbConn\dbSale.cs" />
     <Compile Include="dbConn\dbTicket.cs" />
-    <Compile Include="dbConn\UserDbConn.cs" />
-    <Compile Include="Forms\AdminBookingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AdminBookingForm.Designer.cs">
-      <DependentUpon>AdminBookingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\BookingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\BookingsForm.Designer.cs">
-      <DependentUpon>BookingsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="dbConn\BookingsDbConn.cs" />
-    <Compile Include="dbConn\PassengerDbConn.cs" />
+    <Compile Include="dbConn\dbUser.cs" />
     <Compile Include="Forms\Form_AddClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,49 +182,18 @@
     <Compile Include="Forms\Form_EmailTicket.Designer.cs">
       <DependentUpon>Form_EmailTicket.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PassengersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PassengersForm.Designer.cs">
-      <DependentUpon>PassengersForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="dbConn\dbSQL.cs" />
-    <Compile Include="Forms\DashBoardForm.cs">
+    <Compile Include="Forms\Form_SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DashBoardForm.Designer.cs">
-      <DependentUpon>DashBoardForm.cs</DependentUpon>
+    <Compile Include="Forms\Form_SignIn.Designer.cs">
+      <DependentUpon>Form_SignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FlightsForm.cs">
+    <Compile Include="Forms\Form_SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FlightsForm.Designer.cs">
-      <DependentUpon>FlightsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="dbConn\FlightsDbConn.cs" />
-    <Compile Include="Forms\SignInForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SignInForm.Designer.cs">
-      <DependentUpon>SignInForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SignUpForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SignUpForm.Designer.cs">
-      <DependentUpon>SignUpForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\UserBookingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UserBookingForm.Designer.cs">
-      <DependentUpon>UserBookingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AdminUserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AdminUserForm.Designer.cs">
-      <DependentUpon>AdminUserForm.cs</DependentUpon>
+    <Compile Include="Forms\Form_SignUp.Designer.cs">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Expense.cs" />
@@ -246,7 +201,6 @@
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\DGVPrinter.cs" />
     <Compile Include="UserControls\UC_Home.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -277,12 +231,6 @@
     <Compile Include="UserControls\UC_ManageSales.designer.cs">
       <DependentUpon>UC_ManageSales.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\AdminBookingForm.resx">
-      <DependentUpon>AdminBookingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BookingsForm.resx">
-      <DependentUpon>BookingsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_AddClient.resx">
       <DependentUpon>Form_AddClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,26 +264,11 @@
     <EmbeddedResource Include="Forms\Form_EmailTicket.resx">
       <DependentUpon>Form_EmailTicket.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PassengersForm.resx">
-      <DependentUpon>PassengersForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_SignIn.resx">
+      <DependentUpon>Form_SignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DashBoardForm.resx">
-      <DependentUpon>DashBoardForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FlightsForm.resx">
-      <DependentUpon>FlightsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SignInForm.resx">
-      <DependentUpon>SignInForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SignUpForm.resx">
-      <DependentUpon>SignUpForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UserBookingForm.resx">
-      <DependentUpon>UserBookingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminUserForm.resx">
-      <DependentUpon>AdminUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_SignUp.resx">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

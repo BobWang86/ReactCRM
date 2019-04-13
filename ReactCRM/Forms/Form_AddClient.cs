@@ -49,14 +49,15 @@ namespace ReactCRM.Forms
 
         private void btnGen_Click(object sender, EventArgs e)
         {
-            //var random = new Bogus.Randomizer();
-            //var lorem = new Bogus.DataSets.Lorem("en");
-            //int OrderId = random.Number(1, 100);
-            //string Item = lorem.Sentence();
-            //Console.WriteLine(OrderId);
-            //Console.WriteLine(Item);
+            Client bogusClient = new Client();
 
-            MessageBox.Show("New Clients Generated!", "Add Client", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            clients.Connect();
+            if (clients.ConnOpen() == true)
+            {
+                clients.AddClient(bogusClient.Name, bogusClient.Email, bogusClient.Phone, bogusClient.Institute, bogusClient.Source, bogusClient.Pipeline, bogusClient.AddDate, bogusClient.ContactDate);
+
+                MessageBox.Show("New Clients Generated!", "Add Client", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private bool FormValidate()
