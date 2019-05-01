@@ -9,10 +9,6 @@ namespace ReactCRM.Models
 {
     class Sale : Faker<Sale>
     {
-        //SaleID`, `Client`, `Product`, `Price`, `Date
-        //Interactive Timetabling", "Automated Timetabling", "Attendance Monitoring", "Room Booking", 
-        //"Pay Claim", "Integration", "Consultancy", "Training"
-
         public int ID { get; set; }
         public string ClientID { get; set; }
         public string Product { get; set; }

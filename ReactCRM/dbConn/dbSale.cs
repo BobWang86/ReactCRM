@@ -11,12 +11,12 @@ namespace ReactCRM.dbConn
 {
     class dbSale : DbSQL
     {   
-        public void AddSale(string Client, string Product, decimal Price, string Date)
+        public void AddSale(string ClientID, string Product, decimal Price, string Date)
         {
             MySqlCommand comm = conn.CreateCommand();
             comm.CommandText = "INSERT INTO `tbSale` (`SaleID`, `Client`, `Product`, `Price`, `Date`)" +
                 "VALUES (NULL,@Client, @Product, @Price, @Date);";
-            comm.Parameters.AddWithValue("@Client", Client);
+            comm.Parameters.AddWithValue("@ClientID", ClientID);
             comm.Parameters.AddWithValue("@Product", Product);
             comm.Parameters.AddWithValue("@Price", Price);
             comm.Parameters.AddWithValue("@Date", Date);
@@ -24,12 +24,12 @@ namespace ReactCRM.dbConn
             ConnClose();
         }
 
-        public void UpdateSale(string SaleID, string Client, string Product, decimal Price, string Date)
+        public void UpdateSale(string SaleID, string ClientID, string Product, decimal Price, string Date)
         {
             MySqlCommand comm = conn.CreateCommand();
-            comm.CommandText = "UPDATE `tbSale` SET `Client`=@Client,`Product`=@Product,`Price`=@Price, `Date`=@Date WHERE SaleID = @SaleID";
+            comm.CommandText = "UPDATE `tbSale` SET `ClientID`=@ClientID,`Product`=@Product,`Price`=@Price, `Date`=@Date WHERE SaleID = @SaleID";
             comm.Parameters.AddWithValue("@SaleID", SaleID);
-            comm.Parameters.AddWithValue("@Client", Client);
+            comm.Parameters.AddWithValue("@ClientID", ClientID);
             comm.Parameters.AddWithValue("@Product", Product);
             comm.Parameters.AddWithValue("@Price", Price);
             comm.Parameters.AddWithValue("@Date", Date);

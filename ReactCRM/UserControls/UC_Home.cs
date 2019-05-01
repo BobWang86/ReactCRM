@@ -18,6 +18,7 @@ using Panel = System.Windows.Controls.Panel;
 using HorizontalAlignment = System.Windows.HorizontalAlignment;
 using Separator = LiveCharts.Wpf.Separator;
 using ReactCRM.dbConn;
+using LiveCharts.Configurations;
 
 namespace ReactCRM.UserControls
 {
@@ -33,12 +34,37 @@ namespace ReactCRM.UserControls
         {
             InitializeComponent();
 
-            StackChart();
+            LineChart();
 
             FunnelChart();
         }
 
-        private void StackChart()
+        public LineSeries RevenueSeries { get; set; }
+        public LineSeries ExpenseSeries { get; set; }
+        public LineSeries ProfitSeries { get; set; }
+
+        private void cbRevenue_CheckedChanged(object sender, EventArgs e)
+        {
+            RevenueSeries.Visibility = RevenueSeries.Visibility == Visibility.Visible
+                ? Visibility.Hidden
+                : Visibility.Visible;
+        }
+
+        private void cbExpense_CheckedChanged(object sender, EventArgs e)
+        {
+            ExpenseSeries.Visibility = ExpenseSeries.Visibility == Visibility.Visible
+               ? Visibility.Hidden
+               : Visibility.Visible;
+        }
+
+        private void cbProfit_CheckedChanged(object sender, EventArgs e)
+        {
+            ProfitSeries.Visibility = ProfitSeries.Visibility == Visibility.Visible
+                ? Visibility.Hidden
+                : Visibility.Visible;
+        }
+
+        private void LineChart()
         {
             cartesianChart1.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 255, 255));
 
@@ -46,20 +72,30 @@ namespace ReactCRM.UserControls
 
             List<double> Expenditure = expenses.GetExpensesByDate(expenses);
 
+            RevenueSeries = new LineSeries
+            {
+                Title = "Revenue",
+                Values = new ChartValues<double> { Revenue[0], Revenue[1], Revenue[2], Revenue[3], Revenue[4], Revenue[5] },
+                LineSmoothness = 1
+            };
+            ExpenseSeries = new LineSeries
+            {
+                Title = "Expense",
+                Values = new ChartValues<double> { Expenditure[0], Expenditure[1], Expenditure[2], Expenditure[3], Expenditure[4], Expenditure[5] },
+                LineSmoothness = 1
+            };
+            ProfitSeries = new LineSeries
+            {
+                Title = "Profit",
+                Values = new ChartValues<double> { Revenue[0]-Expenditure[0], Revenue[1]- Expenditure[1], Revenue[2]- Expenditure[2], Revenue[3]- Expenditure[3], Revenue[4]-Expenditure[4], Revenue[5]-Expenditure[5] },
+                LineSmoothness = 1
+            };
+
             cartesianChart1.Series = new SeriesCollection
             {
-                new StackedAreaSeries
-                {
-                    Title = "Revenue",
-                    Values = new ChartValues<double> { Revenue[0], Revenue[1], Revenue[2], Revenue[3], Revenue[4], Revenue[5] },
-                    LineSmoothness = 1
-                },
-                new StackedAreaSeries
-                {
-                    Title = "Expenditure",
-                    Values = new ChartValues<double> { Expenditure[0], Expenditure[1], Expenditure[2], Expenditure[3], Expenditure[4], Expenditure[5] },
-                    LineSmoothness = 1
-                },
+                RevenueSeries,
+                ExpenseSeries,
+                ProfitSeries
             };
 
             cartesianChart1.AxisX.Add(new Axis

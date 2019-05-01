@@ -12,6 +12,7 @@ using ReactCRM.dbConn;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
+using DGVPrinterHelper;
 
 namespace ReactCRM.UserControls
 {
@@ -20,6 +21,8 @@ namespace ReactCRM.UserControls
         string ClientID;
 
         dbClient clients = new dbClient();
+
+        DGVPrinter printer = new DGVPrinter();
 
         public DataTable selectedClient = new DataTable();
 
@@ -60,19 +63,6 @@ namespace ReactCRM.UserControls
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
-            {
-                if (clients.ConnOpen() == true)
-                {
-                    clients.DeleteClient(ClientID);
-                    dgvClients.DataSource = clients.SuperQuery($"SELECT * FROM `viewClient`").Tables[0];
-                }
-                clients.ConnClose();
-            }
-        }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             clients.Connect();
@@ -87,12 +77,75 @@ namespace ReactCRM.UserControls
             PieChart();
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+            {
+                if (clients.ConnOpen() == true)
+                {
+                    clients.DeleteClient(ClientID);
+                    dgvClients.DataSource = clients.SuperQuery($"SELECT * FROM `viewClient`").Tables[0];
+                }
+                clients.ConnClose();
+            }
+        }
+
         private void btnEmail_Click(object sender, EventArgs e)
         {
             using (Form_EmailProduct form = new Form_EmailProduct(selectedClient))
             {
                 form.ShowDialog();
             }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "Client_Info";
+
+            for (int i = 1; i < dgvClients.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i] = dgvClients.Columns[i - 1].HeaderText;
+            }
+
+            for (int i = 0; i < dgvClients.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgvClients.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = dgvClients.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "Client_Info";
+            saveFileDialog.DefaultExt = ".xlsx";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(saveFileDialog.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            }
+            excel.Quit();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            printer.Title = "DigitalHub Clients Information";
+            printer.SubTitle = string.Format($"Date: {DateTime.Now.Date.ToString("yyyy/MM/dd")}");
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.Footer = "DigitalHub";
+            printer.FooterSpacing = 15;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.printDocument.DefaultPageSettings.Landscape = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
+
+            printer.PrintDataGridView(dgvClients);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

@@ -21,7 +21,7 @@ namespace ReactCRM.Forms
         {
             InitializeComponent();
 
-            BindOptions();
+            BindData();
 
             ClientID = selectedClient.Rows[0][0].ToString();
             tbName.Text = selectedClient.Rows[0][1].ToString();
@@ -34,7 +34,7 @@ namespace ReactCRM.Forms
             tbDate.Text = selectedClient.Rows[0][9].ToString();
         }
 
-        private void BindOptions()
+        private void BindData()
         {
             tbPipeline.DropDownStyle = ComboBoxStyle.DropDownList;
             tbSource.DropDownStyle = ComboBoxStyle.DropDownList;

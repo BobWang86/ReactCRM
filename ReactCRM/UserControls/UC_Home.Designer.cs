@@ -39,6 +39,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.cbRevenue = new System.Windows.Forms.CheckBox();
+            this.cbExpense = new System.Windows.Forms.CheckBox();
+            this.cbProfit = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,6 +70,9 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(54)))), ((int)(((byte)(101)))));
+            this.panel5.Controls.Add(this.cbProfit);
+            this.panel5.Controls.Add(this.cbExpense);
+            this.panel5.Controls.Add(this.cbRevenue);
             this.panel5.Controls.Add(this.pictureBox1);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -90,9 +96,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 21);
+            this.label1.Size = new System.Drawing.Size(144, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Total Revenue:";
+            this.label1.Text = "Revenue/Expense:";
             // 
             // panel3
             // 
@@ -141,6 +147,54 @@
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
             // 
+            // cbRevenue
+            // 
+            this.cbRevenue.AutoSize = true;
+            this.cbRevenue.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbRevenue.Checked = true;
+            this.cbRevenue.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRevenue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbRevenue.ForeColor = System.Drawing.Color.White;
+            this.cbRevenue.Location = new System.Drawing.Point(398, 19);
+            this.cbRevenue.Name = "cbRevenue";
+            this.cbRevenue.Size = new System.Drawing.Size(89, 25);
+            this.cbRevenue.TabIndex = 2;
+            this.cbRevenue.Text = "Revenue";
+            this.cbRevenue.UseVisualStyleBackColor = true;
+            this.cbRevenue.CheckedChanged += new System.EventHandler(this.cbRevenue_CheckedChanged);
+            // 
+            // cbExpense
+            // 
+            this.cbExpense.AutoSize = true;
+            this.cbExpense.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbExpense.Checked = true;
+            this.cbExpense.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbExpense.ForeColor = System.Drawing.Color.White;
+            this.cbExpense.Location = new System.Drawing.Point(496, 19);
+            this.cbExpense.Name = "cbExpense";
+            this.cbExpense.Size = new System.Drawing.Size(86, 25);
+            this.cbExpense.TabIndex = 2;
+            this.cbExpense.Text = "Expense";
+            this.cbExpense.UseVisualStyleBackColor = true;
+            this.cbExpense.CheckedChanged += new System.EventHandler(this.cbExpense_CheckedChanged);
+            // 
+            // cbProfit
+            // 
+            this.cbProfit.AutoSize = true;
+            this.cbProfit.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbProfit.Checked = true;
+            this.cbProfit.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbProfit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbProfit.ForeColor = System.Drawing.Color.White;
+            this.cbProfit.Location = new System.Drawing.Point(591, 19);
+            this.cbProfit.Name = "cbProfit";
+            this.cbProfit.Size = new System.Drawing.Size(67, 25);
+            this.cbProfit.TabIndex = 2;
+            this.cbProfit.Text = "Profit";
+            this.cbProfit.UseVisualStyleBackColor = true;
+            this.cbProfit.CheckedChanged += new System.EventHandler(this.cbProfit_CheckedChanged);
+            // 
             // UC_Home
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -175,5 +229,8 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
         private LiveCharts.WinForms.CartesianChart cartesianChart2;
+        private System.Windows.Forms.CheckBox cbProfit;
+        private System.Windows.Forms.CheckBox cbExpense;
+        private System.Windows.Forms.CheckBox cbRevenue;
     }
 }

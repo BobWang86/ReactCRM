@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ReactCRM.Forms;
 using ReactCRM.dbConn;
+using DGVPrinterHelper;
 
 namespace ReactCRM.UserControls
 {
@@ -17,6 +18,8 @@ namespace ReactCRM.UserControls
         string TicketID;
 
         dbTicket tickets = new dbTicket();
+
+        DGVPrinter printer = new DGVPrinter();
 
         DataTable selectedTicket = new DataTable();
 
@@ -53,6 +56,16 @@ namespace ReactCRM.UserControls
             }
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            tickets.Connect();
+            if (tickets.ConnOpen() == true)
+            {
+                dgvTickets.DataSource = tickets.SuperQuery($"SELECT * FROM `viewTicket`").Tables[0];
+            }
+            tickets.ConnClose();
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (DialogResult.Yes == MessageBox.Show("Are you sure you want to delete this ticket?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
@@ -66,14 +79,54 @@ namespace ReactCRM.UserControls
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnExport_Click(object sender, EventArgs e)
         {
-            tickets.Connect();
-            if (tickets.ConnOpen() == true)
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "Ticket_Info";
+
+            for (int i = 1; i < dgvTickets.Columns.Count; i++)
             {
-                dgvTickets.DataSource = tickets.SuperQuery($"SELECT * FROM `viewTicket`").Tables[0];
+                worksheet.Cells[1, i] = dgvTickets.Columns[i - 1].HeaderText;
             }
-            tickets.ConnClose();
+
+            for (int i = 0; i < dgvTickets.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgvTickets.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = dgvTickets.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "Ticket_Info";
+            saveFileDialog.DefaultExt = ".xlsx";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(saveFileDialog.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            }
+            excel.Quit();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            printer.Title = "DigitalHub Tickets Information";
+            printer.SubTitle = string.Format($"Date: {DateTime.Now.Date.ToString("yyyy/MM/dd")}");
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.Footer = "DigitalHub";
+            printer.FooterSpacing = 15;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.printDocument.DefaultPageSettings.Landscape = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
+
+            printer.PrintDataGridView(dgvTickets);
         }
 
         private void btnEmail_Click(object sender, EventArgs e)
