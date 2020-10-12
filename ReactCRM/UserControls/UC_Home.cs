@@ -1,24 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LiveCharts;
-using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using Panel = System.Windows.Controls.Panel;
 using HorizontalAlignment = System.Windows.HorizontalAlignment;
 using Separator = LiveCharts.Wpf.Separator;
 using ReactCRM.dbConn;
-using LiveCharts.Configurations;
 
 namespace ReactCRM.UserControls
 {

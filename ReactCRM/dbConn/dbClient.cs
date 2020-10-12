@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data;
+﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 namespace ReactCRM.dbConn
@@ -73,7 +67,7 @@ namespace ReactCRM.dbConn
             {
                 for (int i = 1; i <= 6; i++)
                 {
-                    int count = Clients.SuperQuery($"SELECT * FROM `tbClient` WHERE `AddDate` Like '%2019-0{i}%'").Tables[0].Rows.Count;
+                    int count = Clients.SuperQuery($"SELECT * FROM `tbClient` WHERE year(AddDate) = 2019 AND month(AddDate) = {i}").Tables[0].Rows.Count;
 
                     Count.Add(count);
                 }

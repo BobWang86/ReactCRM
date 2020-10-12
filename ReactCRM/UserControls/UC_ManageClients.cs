@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ReactCRM.Forms;
 using ReactCRM.dbConn;
@@ -33,6 +29,7 @@ namespace ReactCRM.UserControls
             clients.Connect();
             if (clients.ConnOpen() == true)
             {
+                var dataSource = clients.SuperQuery($"SELECT * FROM `viewClient`").Tables[0];
                 dgvClients.DataSource = clients.SuperQuery($"SELECT * FROM `viewClient`").Tables[0];
             }
             clients.ConnClose();

@@ -1,9 +1,6 @@
 ﻿using ReactCRM.dbConn;
 using ReactCRM.Forms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ReactCRM
@@ -38,6 +35,8 @@ namespace ReactCRM
                 {
                     Application.Exit();
                 }
+
+                //Application.Run(new Form_Dashboard());
             }
             else
             {

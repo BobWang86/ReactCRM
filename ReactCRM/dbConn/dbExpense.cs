@@ -1,10 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReactCRM.dbConn
 {
@@ -52,7 +48,7 @@ namespace ReactCRM.dbConn
             {
                 for (int i = 1; i <= 6; i++)
                 {
-                    DataTable table = Expenses.SuperQuery($"SELECT SUM(Amount) FROM `tbExpense` WHERE `Date` Like '%2019-0{i}%'").Tables[0];
+                    DataTable table = Expenses.SuperQuery($"SELECT SUM(Amount) FROM `tbExpense` WHERE year(Date) = 2019 AND month(Date) = {i}").Tables[0];
                     if (string.IsNullOrEmpty(table.Rows[0][0].ToString()))
                     {
                         List.Add(0);
