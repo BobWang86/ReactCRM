@@ -1,19 +1,29 @@
 # ReactCRM_CUC
-CRM system built for DigitalHub
 
 -----------------------
-React CRM - Haobo Wang
+## React CRM - A WinForms CRUD Application
 -----------------------
 
-I. User Account
+### Home Page
 -----------------------
-Admin Account: 
-Email: admin@gmail.com 
-Password: admin
+![Home Page](https://211it.azurewebsites.net/img/ReactCRM/Home.png)
                        
-II. Folder list         
+### Sales Page
 ----------------------- 
-dbConn                 Database Connection Files
-Forms                  Windows Form Files
-Models                 Classes For Generating Fake Data
-UserControls           Panels To Be Loaded Into The Dashboard Form
+![Sales Page](https://211it.azurewebsites.net/img/ReactCRM/Sales.png)
+
+### Clients Page
+----------------------- 
+![Sales Page](https://211it.azurewebsites.net/img/ReactCRM/Clients.png)
+
+### Expenses Page
+----------------------- 
+![Sales Page](https://211it.azurewebsites.net/img/ReactCRM/Expenses.png)
+
+### Tickets Page
+----------------------- 
+![Sales Page](https://211it.azurewebsites.net/img/ReactCRM/Tickets.png)
+
+### Requirement Summary
+----------------------- 
+![Sales Page](https://211it.azurewebsites.net/img/ReactCRM/DigitalHub_Pitch_Requirements.png)
