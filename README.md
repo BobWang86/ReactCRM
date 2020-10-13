@@ -14,16 +14,16 @@
 
 ### Clients Page
 ----------------------- 
-![Sales Page](https://211it.azurewebsites.net/img/ReactCRM/Clients.png)
+!Clients Page](https://211it.azurewebsites.net/img/ReactCRM/Clients.png)
 
 ### Expenses Page
 ----------------------- 
-![Sales Page](https://211it.azurewebsites.net/img/ReactCRM/Expenses.png)
+!Expenses Page](https://211it.azurewebsites.net/img/ReactCRM/Expenses.png)
 
 ### Tickets Page
 ----------------------- 
-![Sales Page](https://211it.azurewebsites.net/img/ReactCRM/Tickets.png)
+!Tickets Page](https://211it.azurewebsites.net/img/ReactCRM/Tickets.png)
 
 ### Requirement Summary
 ----------------------- 
-![Sales Page](https://211it.azurewebsites.net/img/ReactCRM/DigitalHub_Pitch_Requirements.png)
+![Requirement Summary](https://211it.azurewebsites.net/img/ReactCRM/DigitalHub_Pitch_Requirements.png)
